@@ -1,4 +1,4 @@
-package model.skills;
+package model.skill;
 
 public class BarginSkill extends Skill{
 

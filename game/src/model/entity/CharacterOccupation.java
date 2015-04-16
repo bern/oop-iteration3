@@ -1,8 +1,8 @@
-package model.entities;
+package model.entity;
 
-import model.skills.BarginSkill;
-import model.skills.BindWoundSkill;
-import model.skills.ObservationSkill;
+import model.skill.BarginSkill;
+import model.skill.BindWoundSkill;
+import model.skill.ObservationSkill;
 
 public abstract class CharacterOccupation extends Occupation {
 

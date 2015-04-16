@@ -1,6 +1,6 @@
-package model.entities;
+package model.entity;
 
-import model.stats.StatContainer;
+import model.stat.StatContainer;
 
 public abstract class Occupation {
 	StatContainer statContainer;
