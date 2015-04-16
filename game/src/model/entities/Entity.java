@@ -1,6 +1,6 @@
-package models.entities;
+package model.entities;
 
-import models.map.Location;
+import model.map.Location;
 
 public class Entity {
 	Location location;

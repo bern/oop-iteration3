@@ -1,4 +1,4 @@
-package models.stats;
+package model.stats;
 
 public class StatContainer {
 

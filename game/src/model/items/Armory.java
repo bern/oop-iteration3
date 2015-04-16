@@ -1,4 +1,4 @@
-package models.items;
+package model.items;
 
 public class Armory {
 

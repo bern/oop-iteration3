@@ -1,4 +1,4 @@
-package models.skills;
+package model.skills;
 
 public class Skill {
 	public Skill() {
