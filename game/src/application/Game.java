@@ -1,5 +1,8 @@
 package application;
 
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
 import application.display.Display;
 
 
@@ -13,6 +16,12 @@ public class Game implements Runnable{
 	
 	private boolean running = false;
 	private Thread thread;
+	
+	// way to draw to screen under render
+	// eliminates flickering in screen game
+	private BufferStrategy bs;
+	private Graphics graphic;
+	
 	
 	public Game(String title, int width, int height) {
 		this.width = width;
@@ -36,6 +45,20 @@ public class Game implements Runnable{
 	
 	//render draws to screen
 	private void render(){
+		bs = display.getCanvas().getBufferStrategy();
+		if(bs == null){
+			display.getCanvas().createBufferStrategy(3);
+			return;
+		}
+		//graphics object to draw graphics to the canvas
+		graphic = bs.getDrawGraphics();
+		//Draw here TESTing!
+		
+		graphic.fillRect(0, 0, width, height);
+		
+		//End draw
+		bs.show();
+		graphic.dispose();
 	
 	}
 	
