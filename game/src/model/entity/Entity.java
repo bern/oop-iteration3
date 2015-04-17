@@ -1,7 +1,6 @@
 package model.entity;
 
 import model.entity.occupation.Occupation;
-import model.item.Armory;
 import model.item.Inventory;
 import model.item.TakeableItem;
 import model.map.Location;
@@ -9,9 +8,9 @@ import model.map.MapPlaceable;
 
 public class Entity implements MapPlaceable {
 	Location location;
-	Occupation occupation;
+	model.entity.occupation.Occupation occupation;
 	Inventory inventory;
-	
+
 	public Entity(Location location, Occupation occupation) {
 		this.location = location;
 		this.occupation = occupation;
@@ -30,11 +29,7 @@ public class Entity implements MapPlaceable {
 		return occupation;
 	}
 	
-	public void getLocation(Location location) {
-		this.location = location;
-	}
-	
-	public void getOccupation(Occupation occupation) {
+	public void setOccupation(Occupation occupation) {
 		this.occupation = occupation;
 	}
 
