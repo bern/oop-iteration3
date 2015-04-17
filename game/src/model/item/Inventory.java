@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * *****not finished******
  */
 public class Inventory {
-	Armory armory;
 	ArrayList<TakeableItem> items;
 	
 	public Inventory() {
@@ -28,10 +27,6 @@ public class Inventory {
 			return false;
 		}
 		
-	}
-	
-	public boolean equipItem(TakeableItem item) {
-		return true;
 	}
 	
 	public ArrayList<TakeableItem> getItems() {

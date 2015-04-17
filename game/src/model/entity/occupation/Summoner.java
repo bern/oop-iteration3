@@ -1,4 +1,4 @@
-package model.occupation;
+package model.entity.occupation;
 
 public class Summoner extends CharacterOccupation {
 
