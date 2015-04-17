@@ -1,5 +1,13 @@
 package model.stat;
 
-public class DefensiveRating {
+public class DefensiveRating extends DerivedStat {
+	
+	public DefensiveRating () {
+		super();
+	}
+	
+	public void update (StatContainer sc) {
+		value = sc.getAgility() * sc.getLevel();
+	}
 
 }

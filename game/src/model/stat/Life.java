@@ -1,5 +1,13 @@
 package model.stat;
 
-public class Life {
+public class Life extends DerivedStat {
+	
+	public Life () {
+		super();
+	}
 
+	public void update (StatContainer sc) {
+		value = sc.getHardiness() * sc.getLevel();
+	}
+	
 }

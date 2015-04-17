@@ -1,5 +1,13 @@
 package model.stat;
 
-public class Mana {
+public class Mana extends DerivedStat {
 
+	public Mana () {
+		super();
+	}
+	
+	public void update (StatContainer sc) {
+		value = sc.getIntellect() * sc.getLevel();
+	}
+	
 }
