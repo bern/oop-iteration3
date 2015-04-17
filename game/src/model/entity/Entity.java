@@ -1,11 +1,18 @@
 package model.entity;
 
+import model.item.Inventory;
 import model.map.Location;
-import model.occupation.Occupation;
+import model.occupation.*;
 
 public class Entity {
 	Location location;
 	Occupation occupation;
+	Inventory inventory;
+	
+	public Entity () {
+		location = new Location();
+		occupation = new Smasher();
+	}
 	
 	public Entity(Occupation occupation) {
 		this.occupation = occupation;
