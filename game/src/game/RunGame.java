@@ -1,7 +1,9 @@
 package game;
 
+import game.display.Display;
+
 public class RunGame {
 	public static void main(String[] args) {
-	    System.out.println("Game started!");
+	    new Display("Title!", 300,300);
 	  }
 }
