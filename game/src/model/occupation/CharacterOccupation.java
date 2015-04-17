@@ -1,8 +1,15 @@
 package model.occupation;
 
+import model.skill.BargainSkill;
+import model.skill.BindWoundSkill;
+import model.skill.ObservationSkill;
 import model.stat.StatContainer;
 
 public class CharacterOccupation extends Occupation {
+	
+	BargainSkill bargainSkill;
+	BindWoundSkill bindWoundSkill;
+	ObservationSkill observationSkill;
 	
 	public CharacterOccupation () {
 		statContainer = new StatContainer();
@@ -14,6 +21,10 @@ public class CharacterOccupation extends Occupation {
 		statContainer.setHardiness(10);
 		statContainer.setExperience(10);
 		statContainer.setMovement(10);
+		
+		bargainSkill = new BargainSkill();
+		bindWoundSkill = new BindWoundSkill();
+		observationSkill = new ObservationSkill();
 	}
 
 }
