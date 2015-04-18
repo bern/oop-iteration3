@@ -1,6 +1,12 @@
 package model.behavior;
 
+import javax.swing.Action;
+
+import model.entity.Entity;
+import model.item.Item;
+import model.map.AreaEffect;
 import model.map.Location;
+import model.map.Terrain;
 
 /*
  * Defines the Interactor interface
@@ -10,6 +16,12 @@ import model.map.Location;
 
 public interface Interactor {
 
-	public void attemptInteractionWith (Location loc);
+	public Action handleInteractionWith (Terrain t);
+	
+	public Action handleInteractionWith (Item i);
+	
+	public Action handleInteractionWith (AreaEffect ae);
+	
+	public Action handleInteractionWith (Entity e);
 	
 }

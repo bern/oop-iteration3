@@ -1,5 +1,7 @@
 package model.behavior;
 
+import javax.swing.Action;
+
 /*
  * Defines the Interactable interface
  * Attach this interface to anything that will contain a behavior
@@ -8,6 +10,6 @@ package model.behavior;
 
 public interface Interactable {
 	
-	public void interactWith (Interactor a);
+	public Action interactWith (Interactor a);
 	
 }
