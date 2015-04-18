@@ -8,7 +8,7 @@ public class MapBuilder {
 
 	public HexTile[][] constructMainMap () {
 		
-		HexTile[][] map = new HexTile[10][10];
+		HexTile[][] map = new HexTile[5][5];
 		
 		for(int r = 0; r < map.length; r++) {
 			for(int c = 0; c < map[r].length; c++) {
@@ -17,8 +17,8 @@ public class MapBuilder {
 		}
 		
 		for(int r = 0; r < map.length; r++) {
-			HashSet<Integer> directions = directionsToConsider();
 			for(int c = 0; c < map[r].length; c++) {
+				HashSet<Integer> directions = directionsToConsider();
 				if(r == 0) {
 					directions.remove(Direction.NORTHEAST);
 					directions.remove(Direction.NORTH);
