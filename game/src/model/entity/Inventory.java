@@ -1,16 +1,17 @@
-package model.item;
+package model.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/*
- * inventory class, in charge of keeping track of equiping takeable items.
- * *****not finished******
- */
+import model.item.TakeableItem;
+
+
 public class Inventory {
-	ArrayList<TakeableItem> items;
+	
+	private ArrayList<TakeableItem> items;
 	
 	public Inventory() {
-		
+		items = new ArrayList<TakeableItem>();
 	}
 	
 	public boolean addItem(TakeableItem item) {
@@ -29,7 +30,17 @@ public class Inventory {
 		
 	}
 	
+	public boolean equipItem(TakeableItem item) {
+		return true;
+	}
+	
+	public boolean hasItem(TakeableItem item) {
+		return items.contains(item);
+	}
+	
 	public ArrayList<TakeableItem> getItems() {
 		return items;
 	}
+	
+
 }
