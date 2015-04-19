@@ -14,7 +14,7 @@ public class EffectBin {
     private List<TimedEffect> effects;
     
     public EffectBin() {
-        effects = new ArrayList<>();
+        effects = new ArrayList();
     }
     
     public void addEffect(TimedEffect e) { effects.add(e); }

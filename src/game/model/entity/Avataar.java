@@ -4,10 +4,10 @@ import game.util.Location;
 
 import javax.swing.*;
 
-public class Npc extends Entity {
+public class Avataar extends Entity {
 
-
-    public Npc(Location l) {
+    public Avataar(Location l) {
         super(l);
     }
+
 }

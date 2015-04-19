@@ -2,7 +2,7 @@ package game.model.game_world;
 
 import game.Game;
 import game.model.MainModel;
-import game.model.behavior.EntityInteractable;
+import game.model.behavior.Interactable;
 import game.model.entity.Entity;
 import game.util.Location;
 
@@ -14,7 +14,7 @@ public class GameWorld extends MainModel {
     private int width;
 
     private Entity[][] entities;
-    private EntityInteractable[][] itemsAndAreaEffects;
+    private Interactable[][] itemsAndAreaEffects;
     private Terrain[][] terrains;
 
     private Entity currentEntity;
@@ -25,7 +25,7 @@ public class GameWorld extends MainModel {
         setLength(t.length);
         setCurrentEntity( e );
         setTerrains( t );
-        itemsAndAreaEffects = new EntityInteractable[length][width];
+        itemsAndAreaEffects = new Interactable[length][width];
 
     }
 
@@ -66,11 +66,11 @@ public class GameWorld extends MainModel {
         this.entities = entities;
     }
 
-    public EntityInteractable[][] getItemsAndAreaEffects() {
+    public Interactable[][] getItemsAndAreaEffects() {
         return itemsAndAreaEffects;
     }
 
-    public void setItemsAndAreaEffects(EntityInteractable[][] itemsAndAreaEffects) {
+    public void setItemsAndAreaEffects(Interactable[][] itemsAndAreaEffects) {
         this.itemsAndAreaEffects = itemsAndAreaEffects;
     }
 

@@ -1,13 +1,13 @@
 package game.model.entity;
 
-import game.model.behavior.EntityInteractable;
+import game.model.behavior.Interactable;
 import game.model.game_world.GameWorld;
 import game.util.Location;
 
 import javax.swing.*;
 
 
-public abstract class Entity implements EntityInteractable {
+public abstract class Entity implements Interactable {
 
     private Location location;
     private Location facing;
@@ -21,7 +21,7 @@ public abstract class Entity implements EntityInteractable {
     public void moveTo(Location l) {
         setLocation(l);
     }
-    public final AbstractAction interactWith( EntityInteractable ei){
+    public final AbstractAction interactWith( Interactable ei){
         return ei.interactWith( this );
     }
 

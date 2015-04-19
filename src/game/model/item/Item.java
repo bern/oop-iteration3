@@ -1,10 +1,10 @@
 package game.model.item;
 
 
-import game.model.behavior.EntityInteractable;
+import game.model.behavior.Interactable;
 import game.util.Location;
 
-public abstract class Item implements EntityInteractable {
+public abstract class Item implements Interactable {
     private Location location;
     public Item(Location l) {
         this.location = l;
