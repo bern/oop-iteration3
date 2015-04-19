@@ -17,8 +17,8 @@ hs_err_pid*
 *.db
 
 # Eclipse
-#.classpath
-#.project
+.classpath
+.project
 .settings/
 
 # Intellij
