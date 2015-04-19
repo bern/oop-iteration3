@@ -1,5 +1,3 @@
-# Created by .ignore support plugin (hsz.mobi)
-
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -19,8 +17,8 @@ hs_err_pid*
 *.db
 
 # Eclipse
-.classpath
-.project
+#.classpath
+#.project
 .settings/
 
 # Intellij
