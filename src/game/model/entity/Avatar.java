@@ -1,15 +1,12 @@
 package game.model.entity;
 
-import game.model.item.MapItem;
+import game.model.game_world.Location;
+import game.model.item.Item;
 
-/**
- * Created by parango on 4/19/15.
- */
 public class Avatar extends Entity {
 
-
     public Avatar(int x, int y) {
-        super(x, y);
+        super(new Location(x, y));
     }
 
     public String interactWith( Entity e ){
@@ -23,7 +20,7 @@ public class Avatar extends Entity {
     public String interactWith( Mount m){
         return "Avatar with Mount";
     }
-    public String interactWith( MapItem i){
+    public String interactWith( Item i){
         return "Avatar with Item";
     }
 

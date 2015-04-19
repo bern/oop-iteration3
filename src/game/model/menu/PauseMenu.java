@@ -2,9 +2,6 @@ package game.model.menu;
 
 import game.Game;
 
-/**
- * Created by parango on 4/19/15.
- */
 public class PauseMenu extends GameMenu {
 
     String[] options;

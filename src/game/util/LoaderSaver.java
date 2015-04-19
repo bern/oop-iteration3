@@ -6,7 +6,7 @@ import game.model.entity.Entity;
 import game.model.game_world.GameWorld;
 import game.model.game_world.Grass;
 import game.model.game_world.Terrain;
-import game.model.item.MapItem;
+import game.model.item.Item;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -133,7 +133,7 @@ public class LoaderSaver {
 
     }
 
-    public void save( MapItem[][] entities ){
+    public void save( Item[][] entities ){
 
     }
 

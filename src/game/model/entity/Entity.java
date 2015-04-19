@@ -2,22 +2,24 @@ package game.model.entity;
 
 import game.model.behavior.AnimateInteractable;
 import game.model.behavior.InanimateInteractable;
+import game.model.game_world.Location;
+import game.model.game_world.MapElement;
 
-public abstract class Entity implements AnimateInteractable {
+public abstract class Entity implements AnimateInteractable, MapElement {
+    private Location location;
 
-    private int x, y;
-
-    public Entity( int x, int y){
-        this.x = x;
-        this.y = y;
+    public Entity(Location location){
+        this.location = location;
     }
 
-    public int getX() {
-        return x;
+    @Override
+    public Location getLocation() {
+        return location;
     }
 
-    public int getY() {
-        return y;
+    @Override
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String interactWith( AnimateInteractable i){

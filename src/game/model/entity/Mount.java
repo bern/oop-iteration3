@@ -1,13 +1,14 @@
 package game.model.entity;
 
 
-import game.model.item.MapItem;
+import game.model.game_world.Location;
+import game.model.item.Item;
 
 public class Mount extends Entity {
 
 
     public Mount(int x, int y) {
-        super(x, y);
+        super(new Location(x, y));
     }
 
     public String interactWith( Avatar e ){
@@ -21,7 +22,7 @@ public class Mount extends Entity {
     public String interactWith( Mount m){
         return "Mount with Mount";
     }
-    public String interactWith( MapItem i){
+    public String interactWith( Item i){
         return "Mount with Item";
     }
 }
