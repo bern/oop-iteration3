@@ -22,7 +22,7 @@ public class Location {
         return new Location(getX(), getY()+1);
     }
 
-    public Location nortwest() {
+    public Location northwest() {
         return new Location(getX()+1, getY());
     }
     public Location northeast() {

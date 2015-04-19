@@ -41,6 +41,12 @@ public abstract class Entity implements EntityInteractable {
         allowedActions.put(
                 "SE",
                 gw.terrainBeInteractedToBy(this, location.southeast()));
+        allowedActions.put(
+                "NW",
+                gw.terrainBeInteractedToBy(this, location.northwest()));
+        allowedActions.put(
+                "NE",
+                gw.terrainBeInteractedToBy(this, location.northeast()));
 
 
         return allowedActions;
