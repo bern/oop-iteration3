@@ -21,8 +21,8 @@ public class GameWorld extends MainModel {
 
     public GameWorld(Game g, Terrain[][] t, Entity e){
         super(g);
-        setWidth( terrains[0].length );
-        setLength( terrains.length );
+        setWidth(t[0].length);
+        setLength(t.length);
         setCurrentEntity( e );
         setTerrains( t );
         itemsAndAreaEffects = new EntityInteractable[length][width];

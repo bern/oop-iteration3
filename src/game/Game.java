@@ -51,8 +51,8 @@ public class Game {
 
     }
     public void startGame(){
-    	//GameWorld m = loaderSaver.loadGameWorld( this );
-        GameWorld m = new GameWorld( this );
+    	GameWorld m = loaderSaver.loadNewGameWorld( this);
+        //GameWorld m = new GameWorld( this );
         update(m);
     }
 
@@ -69,14 +69,14 @@ public class Game {
     }
 
     public void loadGame(){
-        //GameWorld m = loaderSaver.loadGameWorld( this );
-        GameWorld m = new GameWorld( this );
+        GameWorld m = loaderSaver.loadNewGameWorld( this);
+        //GameWorld m = new GameWorld( this );
         update( m );
     }
 
     public void saveGame(){
         if(pausedWorld != null){
-            loaderSaver.save( pausedWorld );
+            loaderSaver.saveGameWorld( pausedWorld );
         }
 
     }

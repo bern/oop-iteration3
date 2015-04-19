@@ -1,6 +1,5 @@
 package game.util;
 
-import com.sun.tools.javac.jvm.Items;
 import game.Game;
 import game.model.entity.Character;
 import game.model.entity.Entity;
@@ -36,14 +35,14 @@ public class LoaderSaver {
 
         // TODO IMPLEMENT LOAD  DEFAULT ITEMS
         //Items[] items = loadDefaultItems(){}
-        gameWorld.setItems( null);
+        //gameWorld.setItems( null);
 
         // TODO IMPLEMENT LOAD  DEFAULT ENTITIES
         //Items[] items = loadDefaultItems(){}
 
 
 
-        return null;
+        return gameWorld;
     }
 
     public void saveGameWorld( GameWorld world ){
@@ -62,10 +61,9 @@ public class LoaderSaver {
     private GameWorld loadDefaultGameWorld( Game game ) {
 
         Terrain[][] terrains = loadTerrains();
+        Entity e = new Character(new Location(5, 5));
 
-        GameWorld defaultGameWorld = new GameWorld( game, terrains);
-
-        return defaultGameWorld = new GameWorld( game, terrains);
+        return new GameWorld( game, terrains, e);
     }
 
     private Terrain[][] loadTerrains(){
@@ -73,30 +71,12 @@ public class LoaderSaver {
         char[][] terrainChars = readTerrains();
 
 
-        Terrain[][] terrains = new Terrain[terrainChars.length][terrainChars[0].length];
-        int y = 0;
-        for(char[] tc : terrainChars){
-            int x = 0;
-            for(char c : terrainChars[y]){
-                switch (c){
-                    case 'G':
-                        // TODO FINISH TERRAINS
-                        terrains[y][x] = new Grass(new Location(x, y));
-                        break;
-                    case 'M':
-                        terrains[y][x] = new Grass(new Location(x, y));
-                        break;
-                    case 'D':
-                        terrains[y][x] = new Grass(new Location(x, y));
-                        break;
-                    case 'R':
-                        terrains[y][x] = new Grass(new Location(x, y));
-                        break;
+        Terrain[][] terrains = new Terrain[10][10];
 
-                }
-                x++;
+        for(int y = 0; y< terrains.length; y++){
+            for(int x = 0; x< terrains.length; x++){
+                terrains[y][x] = new Grass( new Location(x,y));
             }
-            y++;
         }
 
         return terrains;
