@@ -5,9 +5,7 @@ import game.util.Location;
 
 import java.awt.event.ActionEvent;
 
-/**
- * Created by parango on 4/19/15.
- */
+
 public class MoveToAction extends GameAction{
     Entity entity;
     Location location;

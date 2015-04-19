@@ -2,7 +2,7 @@ package game.model.game_world;
 
 
 import game.controller.MoveToAction;
-import game.model.entity.Avatar;
+import game.model.entity.Character;
 import game.model.entity.Entity;
 import game.model.entity.Mount;
 import game.model.entity.Npc;
@@ -33,7 +33,7 @@ public class Grass extends Terrain {
     }
 
     @Override
-    public AbstractAction interactWith(Avatar n) {
+    public AbstractAction interactWith(Character n) {
         return null;
     }
 }

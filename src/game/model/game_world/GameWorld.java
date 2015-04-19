@@ -3,7 +3,6 @@ package game.model.game_world;
 import game.Game;
 import game.model.MainModel;
 import game.model.behavior.EntityInteractable;
-import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.util.Location;
 
@@ -11,39 +10,83 @@ import javax.swing.*;
 
 public class GameWorld extends MainModel {
 
-    Entity[][] entities;
-    EntityInteractable[][] itemsAndAreaEffects;
-    Terrain[][] terrains;
+    private int length;
+    private int width;
 
-    Entity entity;
+    private Entity[][] entities;
+    private EntityInteractable[][] itemsAndAreaEffects;
+    private Terrain[][] terrains;
 
-    public GameWorld(Game g, Terrain[][] t){
+    private Entity currentEntity;
+
+    public GameWorld(Game g, Terrain[][] t, Entity e){
         super(g);
-
-        terrains = t;
-        entity = new Avatar(new Location(5,5));
-
-    }
-
-    public GameWorld(Game g){
-        super(g);
-
-        terrains = new Terrain[10][10];
-
-        entity = new Avatar(new Location(5,5));
+        setWidth( terrains[0].length );
+        setLength( terrains.length );
+        setCurrentEntity( e );
+        setTerrains( t );
+        itemsAndAreaEffects = new EntityInteractable[length][width];
 
     }
 
     @Override
     public ActionMap updateValidActions() {
-
-        return entity.interactWith( this );
+        // entity look at the map around you! can you even move brah?! what can you with things around you?
+        return currentEntity.interactWith( this );
     }
 
     public AbstractAction terrainBeInteractedToBy(Entity entity, Location location) {
+        // entity interact with terrains... CAN YOU MOVE ON THEM?
         int x = location.getX();
         int y = location.getY();
         return entity.interactWith(terrains[y][x]);
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public Entity[][] getEntities() {
+        return entities;
+    }
+
+    public void setEntities(Entity[][] entities) {
+        this.entities = entities;
+    }
+
+    public EntityInteractable[][] getItemsAndAreaEffects() {
+        return itemsAndAreaEffects;
+    }
+
+    public void setItemsAndAreaEffects(EntityInteractable[][] itemsAndAreaEffects) {
+        this.itemsAndAreaEffects = itemsAndAreaEffects;
+    }
+
+    public Terrain[][] getTerrains() {
+        return terrains;
+    }
+
+    public void setTerrains(Terrain[][] terrains) {
+        this.terrains = terrains;
+    }
+
+    public Entity getCurrentEntity() {
+        return currentEntity;
+    }
+
+    public void setCurrentEntity(Entity currentEntity) {
+        this.currentEntity = currentEntity;
+    }
 }

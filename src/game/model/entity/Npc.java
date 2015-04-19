@@ -30,7 +30,7 @@ public class Npc extends Entity {
     }
 
     @Override
-    public AbstractAction interactWith(Avatar n) {
+    public AbstractAction interactWith(Character n) {
         return null;
     }
 }

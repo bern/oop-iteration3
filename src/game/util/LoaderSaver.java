@@ -1,7 +1,8 @@
 package game.util;
 
+import com.sun.tools.javac.jvm.Items;
 import game.Game;
-import game.model.entity.Avatar;
+import game.model.entity.Character;
 import game.model.entity.Entity;
 import game.model.game_world.GameWorld;
 import game.model.game_world.Grass;
@@ -28,17 +29,43 @@ public class LoaderSaver {
         inputMap.put(KeyStroke.getKeyStroke("S"), "select");
         return inputMap;
     }
+
+    // brand new game load all the default stuff!
     public GameWorld loadNewGameWorld( Game game ) {
-        Terrain[][] terrains = loadTerrains();
+        GameWorld gameWorld = loadDefaultGameWorld ( game );
+
+        // TODO IMPLEMENT LOAD  DEFAULT ITEMS
+        //Items[] items = loadDefaultItems(){}
+        gameWorld.setItems( null);
+
+        // TODO IMPLEMENT LOAD  DEFAULT ENTITIES
+        //Items[] items = loadDefaultItems(){}
+
 
 
         return null;
     }
-    public GameWorld loadGameWorld( Game game ) {
+
+    public void saveGameWorld( GameWorld world ){
+
+    }
 
 
 
-        return null;
+
+
+
+
+
+
+    // LOAD THINGS THAT NEVER CHANGE... like terrains, area effects,
+    private GameWorld loadDefaultGameWorld( Game game ) {
+
+        Terrain[][] terrains = loadTerrains();
+
+        GameWorld defaultGameWorld = new GameWorld( game, terrains);
+
+        return defaultGameWorld = new GameWorld( game, terrains);
     }
 
     private Terrain[][] loadTerrains(){
@@ -116,23 +143,21 @@ public class LoaderSaver {
     }
 
 
-    public void save( GameWorld world ){
+
+
+    private void save( Character a ){
 
     }
 
-    public void save( Avatar a ){
+    private void save( Terrain[][] terrains ){
 
     }
 
-    public void save( Terrain[][] terrains ){
+    private void save( Entity[][] entities ){
 
     }
 
-    public void save( Entity[][] entities ){
-
-    }
-
-    public void save( ComponentInputMap inputMap ){
+    private void save( ComponentInputMap inputMap ){
 
     }
 

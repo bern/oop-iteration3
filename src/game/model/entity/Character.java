@@ -6,10 +6,10 @@ import game.util.Location;
 
 import javax.swing.*;
 
-public class Avatar extends Entity {
+public class Character extends Entity {
 
 
-    public Avatar(Location l) {
+    public Character(Location l) {
         super(l);
     }
 
@@ -30,7 +30,7 @@ public class Avatar extends Entity {
     }
 
     @Override
-    public AbstractAction interactWith(Avatar n) {
+    public AbstractAction interactWith(Character n) {
         return null;
     }
 }

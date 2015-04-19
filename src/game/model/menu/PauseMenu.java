@@ -2,10 +2,6 @@ package game.model.menu;
 
 import game.Game;
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 public class PauseMenu extends GameMenu {
 
     String[] options;

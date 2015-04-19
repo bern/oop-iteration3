@@ -1,23 +1,23 @@
 package game.controller;
 
-import game.model.entity.Avatar;
+import game.model.entity.Character;
 import game.model.entity.Mount;
 
 import java.awt.event.ActionEvent;
 
 
 public class MountAction extends GameAction{
-    Avatar avatar;
+    Character character;
     Mount mount;
 
-    public MountAction( Avatar a, Mount m) {
-        this.avatar = a;
+    public MountAction( Character a, Mount m) {
+        this.character = a;
         this.mount = m;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        mount.mount(avatar);
+        mount.mount(character);
     }
 }

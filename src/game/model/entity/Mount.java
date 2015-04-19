@@ -1,17 +1,13 @@
 package game.model.entity;
 
 
-<<<<<<< Updated upstream
-import game.model.item.Item;
-=======
 import game.util.Location;
 
 import javax.swing.*;
->>>>>>> Stashed changes
 
 public class Mount extends Entity {
 
-    Avatar mountedAvatar;
+    Character mountedCharacter;
 
     public Mount(Location l) {
         super(l);
@@ -27,35 +23,27 @@ public class Mount extends Entity {
         return null;
     }
 
-<<<<<<< Updated upstream
-    public Mount() {
-        super();
-=======
+
     @Override
     public AbstractAction interactWith(Npc n) {
         return null;
->>>>>>> Stashed changes
     }
 
     @Override
-    public AbstractAction interactWith(Avatar n) {
+    public AbstractAction interactWith(Character n) {
         return null;
     }
 
-    public void mount(Avatar avatar) {
-        setMountedAvatar(avatar);
+    public void mount(Character character) {
+        setMountedCharacter(character);
     }
 
-    public Avatar getMountedAvatar() {
-        return mountedAvatar;
+    public Character getMountedCharacter() {
+        return mountedCharacter;
     }
-<<<<<<< Updated upstream
-    public String interactWith( Item i){
-        return "Mount with Item";
-=======
 
-    public void setMountedAvatar(Avatar mountedAvatar) {
-        this.mountedAvatar = mountedAvatar;
->>>>>>> Stashed changes
+
+    public void setMountedCharacter(Character mountedCharacter) {
+        this.mountedCharacter = mountedCharacter;
     }
 }
