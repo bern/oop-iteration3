@@ -1,27 +1,36 @@
 package game.model.entity;
 
-import game.model.item.Item;
+
+
+import game.util.Location;
+
+import javax.swing.*;
 
 public class Avatar extends Entity {
 
-    public Avatar() {
-        super();
+
+    public Avatar(Location l) {
+        super(l);
     }
 
-    public String interactWith( Entity e ){
-        return "Avatar with Entity";
+    @Override
+    public AbstractAction interactWith(Entity e) {
+        return null;
     }
 
-    public String interactWith( Avatar e ) {
-        return "Avatar with Avatar";
-    }
-
-    public String interactWith( Mount m){
-        return "Avatar with Mount";
-    }
-    public String interactWith( Item i){
-        return "Avatar with Item";
+    @Override
+    public AbstractAction interactWith(Mount m) {
+        return null;
     }
 
 
+    @Override
+    public AbstractAction interactWith(Npc n) {
+        return null;
+    }
+
+    @Override
+    public AbstractAction interactWith(Avatar n) {
+        return null;
+    }
 }

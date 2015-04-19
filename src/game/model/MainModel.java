@@ -17,4 +17,5 @@ public abstract class MainModel{
     }
 
     public abstract ActionMap updateValidActions();
+
 }

@@ -6,7 +6,6 @@ import game.model.entity.Entity;
 import game.model.game_world.GameWorld;
 import game.model.game_world.Grass;
 import game.model.game_world.Terrain;
-import game.model.item.Item;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -55,16 +54,16 @@ public class LoaderSaver {
                 switch (c){
                     case 'G':
                         // TODO FINISH TERRAINS
-                        terrains[y][x] = new Grass();
+                        terrains[y][x] = new Grass(new Location(x, y));
                         break;
                     case 'M':
-                        terrains[y][x] = new Grass();
+                        terrains[y][x] = new Grass(new Location(x, y));
                         break;
                     case 'D':
-                        terrains[y][x] = new Grass();
+                        terrains[y][x] = new Grass(new Location(x, y));
                         break;
                     case 'R':
-                        terrains[y][x] = new Grass();
+                        terrains[y][x] = new Grass(new Location(x, y));
                         break;
 
                 }
@@ -130,10 +129,6 @@ public class LoaderSaver {
     }
 
     public void save( Entity[][] entities ){
-
-    }
-
-    public void save( Item[][] entities ){
 
     }
 
