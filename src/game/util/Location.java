@@ -1,8 +1,5 @@
 package game.util;
 
-/**
- * Created by parango on 4/19/15.
- */
 public class Location {
 
     private int x, y;
@@ -22,6 +19,13 @@ public class Location {
         return new Location(getX()+1, getY());
     }
     public Location southeast() {
+        return new Location(getX(), getY()+1);
+    }
+
+    public Location nortwest() {
+        return new Location(getX()+1, getY());
+    }
+    public Location northeast() {
         return new Location(getX(), getY()+1);
     }
 
