@@ -1,14 +1,13 @@
 package game.model.entity;
 
 
-import game.model.game_world.Location;
 import game.model.item.Item;
 
 public class Mount extends Entity {
 
 
-    public Mount(int x, int y) {
-        super(new Location(x, y));
+    public Mount() {
+        super();
     }
 
     public String interactWith( Avatar e ){

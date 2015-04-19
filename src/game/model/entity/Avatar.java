@@ -1,12 +1,11 @@
 package game.model.entity;
 
-import game.model.game_world.Location;
 import game.model.item.Item;
 
 public class Avatar extends Entity {
 
-    public Avatar(int x, int y) {
-        super(new Location(x, y));
+    public Avatar() {
+        super();
     }
 
     public String interactWith( Entity e ){

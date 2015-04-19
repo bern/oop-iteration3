@@ -21,7 +21,7 @@ public class GameWorld extends MainModel {
         super(g);
 
         terrains = t;
-        entity = new Avatar(5,5);
+        entity = new Avatar();
 
     }
 
@@ -30,7 +30,7 @@ public class GameWorld extends MainModel {
 
         terrains = new Terrain[10][10];
 
-        entity = new Avatar(5,5);
+        entity = new Avatar();
 
     }
 
