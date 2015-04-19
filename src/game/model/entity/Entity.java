@@ -5,21 +5,10 @@ import game.model.behavior.InanimateInteractable;
 import game.model.game_world.Location;
 import game.model.game_world.MapElement;
 
-public abstract class Entity implements AnimateInteractable, MapElement {
-    private Location location;
+public abstract class Entity extends MapElement implements AnimateInteractable {
 
     public Entity(Location location){
-        this.location = location;
-    }
-
-    @Override
-    public Location getLocation() {
-        return location;
-    }
-
-    @Override
-    public void setLocation(Location location) {
-        this.location = location;
+        super(location);
     }
 
     public String interactWith( AnimateInteractable i){

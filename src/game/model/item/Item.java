@@ -1,23 +1,14 @@
 package game.model.item;
 
 
+import game.model.behavior.InanimateInteractable;
 import game.model.game_world.Location;
 import game.model.game_world.MapElement;
 
-public abstract class Item implements MapElement {
+public abstract class Item extends MapElement implements InanimateInteractable {
     private Location location;
 
     public Item(Location location) {
-        location = location;
-    }
-
-    @Override
-    public Location getLocation() {
-        return location;
-    }
-
-    @Override
-    public void setLocation(Location location) {
-        this.location = location;
+        super(location);
     }
 }
