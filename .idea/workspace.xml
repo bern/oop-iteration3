@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51608377-b117-4a51-ac87-3d22cf0c2386" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/model/entity/Avataar.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/model/behavior/Interactable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/game.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="DELETED" beforePath="C:\Users\Matthew LoGalbo\Dropbox\Spring 2015\Object Oriented Programing - COP\Iteration 3\Repo\game.eml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Matthew LoGalbo\Dropbox\Spring 2015\Object Oriented Programing - COP\Iteration 3\Repo\src\game\model\behavior\EntityInteractable.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Matthew LoGalbo\Dropbox\Spring 2015\Object Oriented Programing - COP\Iteration 3\Repo\src\game\model\entity\Character.java" afterPath="" />
@@ -791,12 +800,12 @@
       <created>1429486537916</created>
       <option name="number" value="Default" />
       <updated>1429486537916</updated>
-      <workItem from="1429486548019" duration="707000" />
+      <workItem from="1429486548019" duration="867000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="707000" />
+    <option name="totallyTimeSpent" value="867000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
