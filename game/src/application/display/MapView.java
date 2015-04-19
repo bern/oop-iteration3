@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MapView  extends JComponent {
 	Map map;
@@ -45,28 +46,36 @@ public class MapView  extends JComponent {
     }
     
     public void drawMap(Graphics g) {
+    	MapParser rl = new MapParser();
+    	
+    	ArrayList map = rl.readMap();
+    	
     	 Graphics2D g2d = (Graphics2D) g;
          g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                  RenderingHints.VALUE_ANTIALIAS_ON);
          BufferedImage img;
 		try {
-			img = ImageIO.read(new File("resources/HorizontalHex.png"));
+			img = ImageIO.read(new File("res/Grass.png"));
 			int centerX = getWidth()/2;
-			int centerY = getHeight()/2 - 100;
+			int centerY = getHeight()/2 - 200;
 			
 			int xOffset = 25;
 			int yOffset = 15;
 			
-			for (int row = 0; row < 10; row++) {
+			for (int row = 0; row < 52; row++) {
 				
-				for (int col = 0; col < 10; col++){
+				for (int col = 0; col < 52; col++){
 					xOffset = 25 * col;
 					yOffset = 15 * col;
-					g2d.drawImage(img, centerX + xOffset, centerY + yOffset, null);
+					ArrayList al = (ArrayList) map.get(row);
+					g2d.drawImage((Image) al.get(col), centerX + xOffset, centerY + yOffset, null);
 				}
 				centerX = centerX - 25;
 				centerY = centerY + 15;
+
 			}
+			
+
 			
 			
 //			//0,0
