@@ -16,15 +16,7 @@ hs_err_pid*
 /bin/
 *.db
 
-# Eclipse
-.classpath
-.project
-.settings/
 
-# Intellij
-.idea/
-*.iml
-*.iws
 
 # Mac
 .DS_Store
