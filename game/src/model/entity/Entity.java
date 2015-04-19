@@ -4,7 +4,6 @@ import javax.swing.Action;
 
 import model.behavior.*;
 import model.entity.occupation.*;
-import model.item.Inventory;
 import model.item.Item;
 import model.item.TakeableItem;
 import model.map.AreaEffect;

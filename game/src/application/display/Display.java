@@ -4,11 +4,12 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class Display {
 	
-	private Canvas canvas;
+	//private Canvas canvas;
 	private javax.swing.JFrame frame;
 	
 	private String title;
@@ -19,6 +20,7 @@ public class Display {
 		this.width = width;
 		this.height = height;
 		
+
 		createDisplay();
 	}
 	
@@ -30,19 +32,29 @@ public class Display {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
-		canvas = new Canvas();
-		canvas.setPreferredSize(new Dimension(width, height));
-		canvas.setMaximumSize(new Dimension(width, height));
-		canvas.setMinimumSize(new Dimension(width, height));
+//		canvas = new Canvas();
+//		canvas.setPreferredSize(new Dimension(width, height));
+//		canvas.setMaximumSize(new Dimension(width, height));
+//		canvas.setMinimumSize(new Dimension(width, height));
+//		
+//		frame.add(canvas);
 		
-		frame.add(canvas);
+		//MapView mv = new MapView();
+
+		//frame.add(mv);
+		frame.revalidate();
+		frame.repaint(); 
+		
+		
+		
 		frame.pack();
 		
 	}
 	
-	public Canvas getCanvas(){
-		return canvas;
-	}
+//	public Canvas getCanvas(){
+//		
+//		return canvas;
+//	}
 	
 	
 }

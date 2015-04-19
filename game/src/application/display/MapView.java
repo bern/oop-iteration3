@@ -52,31 +52,34 @@ public class MapView  extends JComponent {
 		try {
 			img = ImageIO.read(new File("resources/HorizontalHex.png"));
 			int centerX = getWidth()/2;
-			int centerY = getHeight()/2;
+			int centerY = getHeight()/2 - 100;
 			
 			int xOffset = 25;
 			int yOffset = 15;
 			
 			for (int row = 0; row < 10; row++) {
+				
 				for (int col = 0; col < 10; col++){
-					xOffset = 25 * row;
+					xOffset = 25 * col;
 					yOffset = 15 * col;
-					g2d.drawImage(img, centerX, centerY, null);
+					g2d.drawImage(img, centerX + xOffset, centerY + yOffset, null);
 				}
+				centerX = centerX - 25;
+				centerY = centerY + 15;
 			}
 			
 			
-			//0,0
-			g2d.drawImage(img,centerX , centerY, null);
-			//0,1
-			g2d.drawImage(img,centerX+25 , centerY+15, null);
-			//1,0
-			g2d.drawImage(img, centerX-25, centerY+15, null);
-			//1,1
-			g2d.drawImage(img, centerX, centerY+30, null);
-			
-			//0,2
-			g2d.drawImage(img,centerX+50 , centerY+30, null);
+//			//0,0
+//			g2d.drawImage(img,centerX , centerY, null);
+//			//0,1
+//			g2d.drawImage(img,centerX+25 , centerY+15, null);
+//			//1,0
+//			g2d.drawImage(img, centerX-25, centerY+15, null);
+//			//1,1
+//			g2d.drawImage(img, centerX, centerY+30, null);
+//			
+//			//0,2
+//			g2d.drawImage(img,centerX+50 , centerY+30, null);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
