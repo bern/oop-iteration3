@@ -3,6 +3,7 @@ package game.model.game_world.terrain;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -27,5 +28,10 @@ public class Mountain extends Terrain {
     @Override
     public String toString(){
         return "Mountain";
+    }
+    
+    @Override
+    public void prepareForDraw(Location l, GameWorldView gmw) {
+    	gmw.drawGameObject(this, l);
     }
 }

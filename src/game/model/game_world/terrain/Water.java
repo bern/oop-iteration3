@@ -3,6 +3,7 @@ package game.model.game_world.terrain;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -26,6 +27,11 @@ public class Water extends Terrain {
     @Override
     public String toString(){
         return "Water";
+    }
+    
+    @Override
+    public void prepareForDraw(Location l, GameWorldView gmw) {
+    	gmw.drawGameObject(this, l);
     }
 }
 
