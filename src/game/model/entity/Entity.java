@@ -3,6 +3,7 @@ package game.model.entity;
 import game.model.behavior.EntityInteractable;
 import game.model.entity.occupation.DefaultOccupation;
 import game.model.entity.occupation.Occupation;
+import game.model.entity.stat.StatContainer;
 import game.model.game_world.Direction;
 import game.model.game_world.GameWorld;
 import game.model.game_world.terrain.Terrain;
@@ -77,9 +78,6 @@ public abstract class Entity implements EntityInteractable {
     }
 
 
-
-
-
     // *************************************
     // HELPERS FOR INTERACTION
     // *************************************
@@ -106,5 +104,13 @@ public abstract class Entity implements EntityInteractable {
         allowedActions.put(
                 "NE",
                 gw.terrainBeInteractedWithBy(this, location.northeast()));
+    }
+
+    public StatContainer getStatContainer() {
+        return occupation.getStatContainer();
+    }
+
+    protected Occupation getOccupation() {
+        return occupation;
     }
 }

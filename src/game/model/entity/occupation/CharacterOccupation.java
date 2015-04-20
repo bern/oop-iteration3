@@ -17,4 +17,8 @@ public class CharacterOccupation extends Occupation {
 		statContainer.setMovement(10);
 	}
 
+	public int getDectionRating() {
+		return statContainer.getAgility() * statContainer.getLevel();
+	}
+
 }

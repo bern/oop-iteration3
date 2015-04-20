@@ -5,10 +5,6 @@ package game.model.abilities;
 
 import game.model.entity.Entity;
 
-/**
- *
- * @author Aidan
- */
 public abstract class StatusEffect {
     private Entity owner;
     
