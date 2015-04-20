@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class AngularAbility extends InfluenceAbility {
     @Override
     protected List<Tile> getAffectedTiles(Entity center) {
-        return new ArrayList<>();
+        return new ArrayList<Tile>();
     }
     
     protected abstract int getAngle();
