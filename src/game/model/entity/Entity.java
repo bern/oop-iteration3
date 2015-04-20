@@ -12,7 +12,6 @@ import javax.swing.*;
 
 
 public abstract class Entity implements Interactable, Interactor{
-
     private Location location;
     private Direction facing;
     private Occupation occupation;
@@ -22,7 +21,6 @@ public abstract class Entity implements Interactable, Interactor{
         setFacing(Direction.DOWN);
         occupation = new DefaultOccupation();
     }
-
     public Entity(Location l, Occupation o) {
         setLocation(l);
         setFacing(Direction.DOWN);
@@ -40,9 +38,7 @@ public abstract class Entity implements Interactable, Interactor{
     public void moveTo(Location l) {
         setLocation(l);
     }
-    public final AbstractAction beInteractedWithBy(Interactable ei){
-        return ei.beInteractedWithBy(this);
-    }
+
 
     public ActionMap interactWith(GameWorld gw){
         ActionMap allowedActions = new ActionMap();
@@ -106,8 +102,5 @@ public abstract class Entity implements Interactable, Interactor{
         allowedActions.put(
                 "NE",
                 gw.terrainBeInteractedToBy(this, location.northeast()));
-
     }
-
-
 }

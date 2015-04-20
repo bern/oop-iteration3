@@ -15,6 +15,6 @@ import java.util.List;
 public abstract class RadialAbility extends InfluenceAbility {
     @Override
     protected List<Tile> getAffectedTiles(Entity center) {
-        return new ArrayList<>();
+        return new ArrayList<Tile>();
     }
 }

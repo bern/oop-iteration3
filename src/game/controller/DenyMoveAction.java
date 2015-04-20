@@ -6,6 +6,6 @@ public class DenyMoveAction extends GameAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Do nothing.
+        //TODO: prevent movement.
     }
 }
