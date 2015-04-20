@@ -20,7 +20,8 @@ public enum ImageResources {
   smasher("res/smasher.png"),
   summoner("res/summoner.png"),
   sneak("res/sneak.png"),
-  mount("res/hotairballoon.png");
+  mount("res/hotairballoon.png"),
+  avatar("res/smasher.png");
   
 
 
