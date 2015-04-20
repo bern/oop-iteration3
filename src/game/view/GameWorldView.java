@@ -2,6 +2,7 @@ package game.view;
 
 
 import game.model.game_world.GameWorld;
+import game.util.Location;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,6 +11,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+
 
 public class GameWorldView  extends JComponent {
     private GameWorld map;
@@ -22,12 +25,13 @@ public class GameWorldView  extends JComponent {
     
 
     public GameWorldView (GameWorld m){
+    	map = m;
     	loadMap();
     }
 
     @Override
     public void paint( Graphics g){
-
+    	
 
         super.paint(g);
 
@@ -76,11 +80,25 @@ public class GameWorldView  extends JComponent {
             	changeInX = X_OFFSET * col;
             	changeInY = Y_OFFSET * col;
             	
-                g2d.drawImage(mapImages[row][col], centerX + changeInX, centerY + changeInY, null);
+            	Location l = new Location(row,col);
+            	String s = map.getTerrainAtLocation(l);
+            	
+            	if (s == "Mountain") {
+            		g2d.drawImage(ImageResources.mountain.getImage(), centerX + changeInX, centerY + changeInY, null);
+            	} else if (s == "Grass" ) {
+            		g2d.drawImage(ImageResources.grass.getImage(), centerX + changeInX, centerY + changeInY, null);
+            	} else if (s == "Dirt" ) {
+            		g2d.drawImage(ImageResources.dirt.getImage(), centerX + changeInX, centerY + changeInY, null);
+            	} else if (s == "River" ) {
+            		g2d.drawImage(ImageResources.water.getImage(), centerX + changeInX, centerY + changeInY, null);
+            	} else if (s == "Water" ) {
+            		g2d.drawImage(ImageResources.water.getImage(), centerX + changeInX, centerY + changeInY, null);
+            	}
+                
                 ++i;
             }
-            centerX = centerX - 25;
-            centerY = centerY + 15;
+            centerX = centerX - X_OFFSET;
+            centerY = centerY + Y_OFFSET;
 
         }
 
@@ -89,6 +107,8 @@ public class GameWorldView  extends JComponent {
 
 
     }
+    
+   
 
 
 }

@@ -90,4 +90,10 @@ public class GameWorld extends MainModel {
     public void setCurrentEntity(Entity currentEntity) {
         this.currentEntity = currentEntity;
     }
+    
+    public String getTerrainAtLocation(Location l) {
+    	
+    	return terrains[l.getY()][l.getX()].toString();
+    	
+    }
 }
