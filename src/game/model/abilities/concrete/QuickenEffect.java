@@ -3,6 +3,7 @@
  */
 package game.model.abilities.concrete;
 
+import game.Game;
 import game.model.abilities.TimedEffect;
 import game.model.entity.Entity;
 
@@ -11,27 +12,28 @@ import game.model.entity.Entity;
  * @author Aidan
  */
 public class QuickenEffect extends TimedEffect {
-    private float strength;
+    private int strength;
     
-    public QuickenEffect(float str, long time) {
+    public QuickenEffect(int str, long time) {
         super(time);
         strength = str;
     }
     
     @Override
     public void reapply() {
-        //getVictim().setSpeed(strength);
+        getVictim().modSpeed(strength);
     }
 
     @Override
     public void reverseEffect() {
-        //getVictim().setSpeed(1.0);
+        getVictim().modSpeed(strength * -1);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        //victim.setSpeed(strength);
+        victim.modSpeed(strength);
         setVictim(victim);
+        Game.getInstance().getActiveWorld().addEffect(this);
     }
     
 }

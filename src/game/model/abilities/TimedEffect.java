@@ -3,12 +3,9 @@
  */
 package game.model.abilities;
 
+import game.model.abilities.StatusEffect;
 import game.model.entity.Entity;
 
-/**
- *
- * @author Aidan
- */
 public abstract class TimedEffect extends StatusEffect {
     private long removeAt;
     private Entity appliedTo;

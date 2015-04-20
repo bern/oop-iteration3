@@ -21,9 +21,9 @@ public class FireballAbility extends ProjectileAbility {
     @Override
     public void activate(Entity caller) {
         FireballProjectile proj = createProjectile();
-        //proj.setDirection(caller.getFacing());
-        //proj.setLocation(caller.getLocation().mod(caller.getFacing()));
-        //Game.getInstance().getActiveWorld().addProjectile(proj);
+        proj.setDirection(caller.getFacing());
+        proj.setLocation(caller.getLocation().dir(caller.getFacing()));
+        Game.getInstance().getActiveWorld().addProjectile(proj);
     }
     
 }

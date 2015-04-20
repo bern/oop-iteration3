@@ -1,5 +1,7 @@
 package game.model.entity.stat;
 
+import game.model.entity.Armory;
+
 public class StatContainer {
 
 	private PrimaryStat livesLeft;
@@ -19,8 +21,12 @@ public class StatContainer {
 	private DerivedStat offensiveRating;
 	private DerivedStat defensiveRating;
 	private DerivedStat armorRating;
+
+	private Armory armory;
 	
-	public StatContainer () {
+	public StatContainer (Armory armory) {
+		this.armory = armory;
+
 		livesLeft = new PrimaryStat();
 		strength = new PrimaryStat();
 		agility = new PrimaryStat();
@@ -29,8 +35,8 @@ public class StatContainer {
 		experience = new PrimaryStat();
 		movement = new PrimaryStat();
                 
-                currentHealth = 0;
-                currentMana = 0;
+		currentHealth = 0;
+		currentMana = 0;
 		
 		level = new Level();
 		life = new Life();
@@ -41,30 +47,34 @@ public class StatContainer {
 		
 		updateAllDerived();
 	}
+
+	public Armory getArmory() {
+		return armory;
+	}
         
-        public int getCurrentHealth() {
-                return currentHealth;
-        }
-        
-        public int getCurrentMana() {
-                return currentMana;
-        }
-        
-        public void modCurrentHealth(int mod) {
-            int newHealth = currentHealth + mod;
-            
-            if(newHealth < 0) newHealth = 0;
-            if(newHealth > getLife()) newHealth = getLife();
-            currentHealth = newHealth;
-        }
-        
-        public void modCurrentMana(int mod) {
-            int newMana = currentMana + mod;
-            
-            if(newMana< 0) newMana = 0;
-            if(newMana > getLife()) newMana = getMana();
-            currentMana = newMana;
-        }
+	public int getCurrentHealth() {
+			return currentHealth;
+	}
+
+	public int getCurrentMana() {
+			return currentMana;
+	}
+
+	public void modCurrentHealth(int mod) {
+		int newHealth = currentHealth + mod;
+
+		if(newHealth < 0) newHealth = 0;
+		if(newHealth > getLife()) newHealth = getLife();
+		currentHealth = newHealth;
+	}
+
+	public void modCurrentMana(int mod) {
+		int newMana = currentMana + mod;
+
+		if(newMana< 0) newMana = 0;
+		if(newMana > getLife()) newMana = getMana();
+		currentMana = newMana;
+	}
 	
 	public int getLivesLeft () {
 		return livesLeft.getValue();
@@ -162,7 +172,7 @@ public class StatContainer {
 		offensiveRating.update(this);
 		defensiveRating.update(this);
 		armorRating.update(this);
-                currentMana = Math.min(currentMana, getMana());
-                currentHealth = Math.min(currentHealth, getLife());
+		currentMana = Math.min(currentMana, getMana());
+        currentHealth = Math.min(currentHealth, getLife());
 	}
 }

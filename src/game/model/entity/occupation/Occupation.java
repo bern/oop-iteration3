@@ -8,9 +8,16 @@ public abstract class Occupation {
 	protected StatContainer statContainer;
 	private Armory armory;
 
+	public Occupation() {
+		armory = new Armory();
+	}
+
+	public Armory getArmory() {
+		return armory;
+	}
+
 	public StatContainer getStatContainer () {
 		return statContainer;
 	}
 
-        
 }

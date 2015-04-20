@@ -6,7 +6,8 @@ import game.model.entity.stat.StatContainer;
 public class CharacterOccupation extends Occupation {
 	
 	public CharacterOccupation () {
-		statContainer = new StatContainer();
+		super();
+		statContainer = new StatContainer(getArmory());
 		
 		statContainer.setLivesLeft(3);
 		statContainer.setStrength(10);
@@ -15,6 +16,10 @@ public class CharacterOccupation extends Occupation {
 		statContainer.setHardiness(10);
 		statContainer.setExperience(10);
 		statContainer.setMovement(10);
+	}
+
+	public int getDectionRating() {
+		return statContainer.getAgility() * statContainer.getLevel();
 	}
 
 }

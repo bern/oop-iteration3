@@ -3,6 +3,7 @@
  */
 package game.model.abilities.concrete;
 
+import game.Game;
 import game.model.abilities.TimedEffect;
 import game.model.entity.Entity;
 
@@ -17,18 +18,19 @@ public class InvisibleEffect extends TimedEffect {
     
     @Override
     public void reapply() {
-        //getVictim().setInvisible(true);
+        getVictim().setInvisible(true);
     }
 
     @Override
     public void reverseEffect() {
-       //getVictim().setInvisible(false);
+       getVictim().setInvisible(false);
     }
 
     @Override
     public void applyTo(Entity victim) {
-       //victim.setInvisible(true);
+       victim.setInvisible(true);
        setVictim(victim);
+       Game.getInstance().getActiveWorld().addEffect(this);
     }
     
 }

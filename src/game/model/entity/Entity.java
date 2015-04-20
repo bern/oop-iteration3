@@ -3,6 +3,7 @@ package game.model.entity;
 import game.model.behavior.EntityInteractable;
 import game.model.entity.occupation.DefaultOccupation;
 import game.model.entity.occupation.Occupation;
+import game.model.entity.stat.StatContainer;
 import game.model.game_world.Direction;
 import game.model.game_world.GameWorld;
 import game.model.game_world.terrain.Terrain;
@@ -15,6 +16,12 @@ public abstract class Entity implements EntityInteractable {
     private Location location;
     private Direction facing;
     private Occupation occupation;
+    
+    private boolean sneaking = false;
+    private boolean afraid = false;
+    private boolean invisible = false;
+    private boolean pacified = false;
+    private boolean paralyzed = false;
 
     public Entity(Location l) {
         setLocation(l);
@@ -25,6 +32,29 @@ public abstract class Entity implements EntityInteractable {
         setLocation(l);
         setFacing(Direction.DOWN);
         occupation = o;
+    }
+    
+    public void setAfraid(boolean afraid) { this.afraid = afraid; }
+    public boolean isAfraid() { return afraid; }
+    
+    public void setPacified(boolean pacified) { this.pacified = pacified; }
+    public boolean isPacified() { return pacified; }
+    
+    public void setParalyzed(boolean paralyzed) { this.paralyzed = paralyzed; }
+    public boolean isParalyzed() { return paralyzed; }
+    
+    public void setInvisible(boolean invisible) { this.invisible = invisible; }
+    public boolean isInvisible() { return invisible; }
+    
+    public void toggleSneaking() { if(sneaking) { sneaking = false; } else { sneaking = true; } }
+    public boolean isSneaking() { return sneaking; }
+    
+    public void modSpeed(int speed) {
+        occupation.getStatContainer().setMovement(occupation.getStatContainer().getMovement() + speed);
+    }
+    
+    public void modStrength(int str) {
+        occupation.getStatContainer().setStrength(occupation.getStatContainer().getStrength() + str);
     }
     
     public void takeDamage(int dmg) {
@@ -77,9 +107,6 @@ public abstract class Entity implements EntityInteractable {
     }
 
 
-
-
-
     // *************************************
     // HELPERS FOR INTERACTION
     // *************************************
@@ -106,5 +133,13 @@ public abstract class Entity implements EntityInteractable {
         allowedActions.put(
                 "NE",
                 gw.terrainBeInteractedWithBy(this, location.northeast()));
+    }
+
+    public StatContainer getStatContainer() {
+        return occupation.getStatContainer();
+    }
+
+    protected Occupation getOccupation() {
+        return occupation;
     }
 }

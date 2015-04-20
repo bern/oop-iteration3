@@ -24,8 +24,6 @@ public class PickpocketAbility extends LinearAbility {
 
     @Override
     public void activate(Entity caller) {
-        PickpocketedEffect ef = createStatusEffect();
-        ef.setOwner(caller);
-        affectTiles(caller, ef);
+        affectTiles(caller);
     }
 }

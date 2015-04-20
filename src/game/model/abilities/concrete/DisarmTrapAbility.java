@@ -25,9 +25,7 @@ public class DisarmTrapAbility extends RadialAbility {
 
     @Override
     public void activate(Entity caller) {
-        TrapDisarmEffect ef = createStatusEffect();
-        ef.setOwner(caller);
-        affectTiles(caller, ef);
+        affectTiles(caller);
     }
     
 }

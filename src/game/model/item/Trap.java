@@ -1,32 +1,40 @@
 package game.model.item;
 
 import game.controller.TriggerTrapAction;
+import game.model.abilities.StatusEffect;
+import game.model.abilities.concrete.EmptyEffect;
 import game.model.entity.Avatar;
-import game.model.game_world.AreaEffect;
 import game.util.Location;
 
 import javax.swing.*;
 
-
-/** Will active an AreaEffect when triggered */
 public class Trap extends Item {
-    AreaEffect areaEffect;
+    StatusEffect effect;
+    int detectionRating;
 
-    public Trap(Location l, AreaEffect areaEffect) {
+    public Trap(Location l, StatusEffect effect, int detectionRating) {
         super(l);
-        areaEffect = areaEffect;
+        this.effect = effect;
+        this.detectionRating = detectionRating;
     }
 
     @Override
     public AbstractAction beInteractedWithBy(Avatar i) {
-        return new TriggerTrapAction(this);
+        return new TriggerTrapAction(this, i);
     }
 
-    public void performAction() {
-        //TODO: Apply area affect to the map.
+    public void performAction(Avatar avatar) {
+        if (isDetected(avatar)) {
+            effect.applyTo(avatar);
+        }
     }
 
+    public boolean isDetected(Avatar avatar) {
+        return avatar.getDetectingRating() > detectionRating;
+    }
+
+    /** Destroy associated effect. Then Remove from the map. */
     public void disarmTrip() {
-
+        this.effect = new EmptyEffect();
     }
 }

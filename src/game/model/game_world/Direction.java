@@ -9,10 +9,10 @@ package game.model.game_world;
  */
 public enum Direction {
     UP(-1,-1),
-    UPLEFT(0,-1),
-    UPRIGHT(-1,0),
-    DOWNLEFT(1,0),
-    DOWNRIGHT(0,1),
+    UPLEFT(-1,0),
+    UPRIGHT(0,-1),
+    DOWNLEFT(0,1),
+    DOWNRIGHT(1,0),
     DOWN(1,1);
     private int x;
     private int y;

@@ -6,10 +6,6 @@ package game.model.abilities.concrete;
 import game.model.abilities.StatusEffect;
 import game.model.entity.Entity;
 
-/**
- *
- * @author Aidan
- */
 public class DamageEffect extends StatusEffect {
     private int damage;
     

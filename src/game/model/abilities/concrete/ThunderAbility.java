@@ -29,8 +29,6 @@ public class ThunderAbility extends AngularAbility {
 
     @Override
     public void activate(Entity caller) {
-        ParalyzeEffect ef = createStatusEffect();
-        ef.setOwner(caller);
-        affectTiles(caller, ef);
+        affectTiles(caller);
     }
 }
