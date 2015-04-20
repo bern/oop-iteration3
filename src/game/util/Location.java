@@ -24,10 +24,10 @@ public class Location {
         return new Location(getX(), getY()+1);
     }
     public Location northwest() {
-        return new Location(getX()+1, getY());
+        return new Location(getX(), getY() - 1);
     }
     public Location northeast() {
-        return new Location(getX(), getY()+1);
+        return new Location(getX() - 1, getY());
     }
     public Location dir(Direction d) {
         return new Location(getX() + d.getX(), getY() + d.getY());
