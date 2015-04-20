@@ -27,6 +27,11 @@ public class LoaderSaver {
         inputMap.put(KeyStroke.getKeyStroke("W"), "N");
         inputMap.put(KeyStroke.getKeyStroke("X"), "S");
         inputMap.put(KeyStroke.getKeyStroke("S"), "select");
+        inputMap.put(KeyStroke.getKeyStroke("Q"), "NW");
+        inputMap.put(KeyStroke.getKeyStroke("E"), "NE");
+        inputMap.put(KeyStroke.getKeyStroke("C"), "SE");
+        inputMap.put(KeyStroke.getKeyStroke("Z"), "SW");
+        inputMap.put(KeyStroke.getKeyStroke("ESCAPE"), "pause");
         return inputMap;
     }
     */
@@ -63,7 +68,7 @@ public class LoaderSaver {
     private GameWorld loadDefaultGameWorld( Game game ) {
 
         Terrain[][] terrains = loadTerrains();
-        Entity e = new Avatar(new Location(5, 5), new Smasher());
+        Entity e = new Avatar(new Location(20, 21), new Smasher());
 
         return new GameWorld( game, terrains, e);
     }

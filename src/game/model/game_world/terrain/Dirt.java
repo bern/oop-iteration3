@@ -1,5 +1,6 @@
 package game.model.game_world.terrain;
 
+import game.controller.MoveToAction;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.util.Location;
@@ -16,7 +17,8 @@ public class Dirt extends Terrain {
 
     @Override
     public AbstractAction beInteractedWithBy(Entity i) {
-        return null;
+        return new MoveToAction(i , getLocation());
+
     }
 
     @Override

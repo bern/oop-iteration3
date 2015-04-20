@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="hexagonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" hexsidelength="20" staggeraxis="x" staggerindex="odd" nextobjectid="1">
  <tileset firstgid="1" name="HorizontalHex" tilewidth="32" tileheight="32">
-  <image source="../Downloads/HorizontalHex.png" width="32" height="32"/>
+  <image source="HorizontalHex.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="73" name="HEXTILES" tilewidth="32" tileheight="32">
-  <image source="../Downloads/HEXTILES.png" width="96" height="768"/>
+  <image source="HEXTILES.png" width="96" height="768"/>
  </tileset>
  <layer name="Tile Layer 1" width="100" height="100">
   <data>

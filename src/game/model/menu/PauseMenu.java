@@ -10,7 +10,7 @@ public class PauseMenu extends GameMenu {
     public PauseMenu(Game g){
         super(g);
         setTitle("Y U NO CONTINUE?");
-        options = new String[]{ "Continue", "Save Game", "Controls", "Main Menu"};
+        options = new String[]{ "Continue", "Save Game", "Controls", "Exit to Main Menu"};
         super.setOptions(options);
 
     }

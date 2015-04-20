@@ -8,6 +8,7 @@ import game.model.game_world.Direction;
 import game.model.game_world.GameWorld;
 import game.model.game_world.terrain.Terrain;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -106,6 +107,8 @@ public abstract class Entity implements EntityInteractable {
         this.facing = facing;
     }
 
+    public abstract void prepareForDraw( GameWorldView g);
+
 
     // *************************************
     // HELPERS FOR INTERACTION
@@ -114,9 +117,9 @@ public abstract class Entity implements EntityInteractable {
 
     // just making things simpler... rings of operation and such
     private void interactWithTerrainsHelper( ActionMap allowedActions, GameWorld gw){
+
         allowedActions.put(
                 "N",
-
                 gw.terrainBeInteractedWithBy(this, location.north()));
         allowedActions.put(
                 "S",
@@ -133,6 +136,30 @@ public abstract class Entity implements EntityInteractable {
         allowedActions.put(
                 "NE",
                 gw.terrainBeInteractedWithBy(this, location.northeast()));
+    }
+
+
+    // just making things simpler... rings of operation and such
+    private void interactWithEntitiesHelper( ActionMap allowedActions, GameWorld gw){
+
+        allowedActions.put(
+                "N",
+                gw.entitiesBeInteractedWithBy(this, location.north()));
+        allowedActions.put(
+                "S",
+                gw.entitiesBeInteractedWithBy(this, location.south()));
+        allowedActions.put(
+                "SW",
+                gw.entitiesBeInteractedWithBy(this, location.southwest()));
+        allowedActions.put(
+                "SE",
+                gw.entitiesBeInteractedWithBy(this, location.southeast()));
+        allowedActions.put(
+                "NW",
+                gw.entitiesBeInteractedWithBy(this, location.northwest()));
+        allowedActions.put(
+                "NE",
+                gw.entitiesBeInteractedWithBy(this, location.northeast()));
     }
 
     public StatContainer getStatContainer() {

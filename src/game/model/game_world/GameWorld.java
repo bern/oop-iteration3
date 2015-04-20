@@ -1,6 +1,7 @@
 package game.model.game_world;
 
 import game.Game;
+import game.controller.PauseGameAction;
 import game.model.MainModel;
 import game.model.abilities.EffectBin;
 import game.model.abilities.Projectile;
@@ -56,15 +57,12 @@ public class GameWorld extends MainModel {
     @Override
     public ActionMap updateValidActions() {
         // entity look at the map around you! can you even move brah?! what can you with things around you?
-        return currentEntity.updateValidActions( this );
+        ActionMap validActions = currentEntity.updateValidActions(this);
+        validActions.put("pause", new PauseGameAction(getGame()));
+        return validActions;
     }
 
-    public AbstractAction terrainBeInteractedWithBy(Entity entity, Location location) {
-        // entity interact with terrains... CAN YOU MOVE ON THEM?
-        int x = location.getX();
-        int y = location.getY();
-        return entity.interactWith(terrains[y][x]);
-    }
+
 
     public int getLength() {
         return length;
@@ -113,21 +111,26 @@ public class GameWorld extends MainModel {
     public void setCurrentEntity(Entity currentEntity) {
         this.currentEntity = currentEntity;
     }
-    
-//    public String getTerrainAtLocation(Location l) {
-//    	
-//    	return terrains[l.getY()][l.getX()].toString();
-//    	
-//    }
+
+
+
+
     
     public void prepareForDrawAt(Location l, GameWorldView gmw) {
     	Terrain t = terrains[l.getY()][l.getX()];
     	t.prepareForDraw(l, gmw);
     }
-    
-//    public Terrain getTerrainAtLocation(Location l) {
-//    	
-//    	return terrains[l.getY()][l.getX()];
-//    	
-//    }
+
+    public Action entitiesBeInteractedWithBy(Entity entity, Location location) {
+        int x = location.getX();
+        int y = location.getY();
+        return entity.interactWith(terrains[y][x]);
+    }
+
+    public AbstractAction terrainBeInteractedWithBy(Entity entity, Location location) {
+        // entity interact with terrains... CAN YOU MOVE ON THEM?
+        int x = location.getX();
+        int y = location.getY();
+        return entity.interactWith(terrains[y][x]);
+    }
 }

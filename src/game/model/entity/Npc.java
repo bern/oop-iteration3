@@ -3,6 +3,7 @@ package game.model.entity;
 import game.controller.DenyMoveAction;
 import game.model.behavior.EntityInteractable;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -21,5 +22,10 @@ public class Npc extends Entity {
     @Override
     public AbstractAction beInteractedWithBy(Avatar a) {
         return new DenyMoveAction();    //Change to TalkingAndDenyMoveAction?!?
+    }
+
+    @Override
+    public void prepareForDraw(GameWorldView g) {
+        g.drawGameObject( this );
     }
 }

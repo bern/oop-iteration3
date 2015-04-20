@@ -1,5 +1,6 @@
 package game.model.game_world.terrain;
 
+import game.controller.MoveToAction;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.util.Location;
@@ -15,12 +16,14 @@ public class River  extends Terrain{
 
     @Override
     public AbstractAction beInteractedWithBy(Entity i) {
-        return null;
+        return new MoveToAction(i , getLocation().southwest());
+
     }
 
     @Override
     public AbstractAction beInteractedWithBy(Avatar a) {
-        return null;
+
+        return new  MoveToAction(a , getLocation().southwest().southwest());
     }
 
     @Override

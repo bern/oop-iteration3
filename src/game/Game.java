@@ -8,6 +8,7 @@ import game.model.menu.GameMenu;
 import game.model.menu.KeyBindingMenu;
 import game.model.menu.MainMenu;
 import game.util.KeyBindings;
+import game.model.menu.PauseMenu;
 import game.util.LoaderSaver;
 import game.view.GameWorldView;
 import game.view.menu_view.MenuView;
@@ -75,11 +76,15 @@ public class Game {
     }
 
     public void pauseGame(){   // only an action in GameWorld should access this method
-        try {
-            pausedWorld = (GameWorld) model;
-        } catch ( ClassCastException e ){
-            System.out.println(" Y U TRY AND SAVE WRONG MODEL?");
+        if(pausedWorld == null){
+            try {
+                pausedWorld = (GameWorld) model;
+                update(new PauseMenu(this));
+            } catch (ClassCastException e) {
+                System.out.println(" Y U TRY AND SAVE WRONG MODEL?");
+            }
         }
+        update(new PauseMenu(this));
     }
     public void continueGame(){
         update( pausedWorld );
