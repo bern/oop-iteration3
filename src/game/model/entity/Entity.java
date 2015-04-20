@@ -1,48 +1,30 @@
 package game.model.entity;
 
-import game.model.behavior.Interactable;
+import game.model.behavior.EntityInteractable;
 import game.model.behavior.Interactor;
-import game.model.entity.occupation.DefaultOccupation;
-import game.model.entity.occupation.Occupation;
-import game.model.game_world.Direction;
 import game.model.game_world.GameWorld;
 import game.util.Location;
 
 import javax.swing.*;
 
 
-public abstract class Entity implements Interactable, Interactor{
+public abstract class Entity implements EntityInteractable, Interactor{
+
     private Location location;
-    private Direction facing;
-    private Occupation occupation;
+    private Location facing;
 
     public Entity(Location l) {
         setLocation(l);
-        setFacing(Direction.DOWN);
-        occupation = new DefaultOccupation();
+        setFacing(l.south());
     }
-    public Entity(Location l, Occupation o) {
-        setLocation(l);
-        setFacing(Direction.DOWN);
-        occupation = o;
-    }
-    
-    public void takeDamage(int dmg) {
-        occupation.getStatContainer().modCurrentHealth(dmg * -1);
-    }
-    
-    public void healDamage(int amt) {
-        occupation.getStatContainer().modCurrentHealth(amt);
-    }
-    
-    public void modifyHealth(int amt) {
-        occupation.getStatContainer().modCurrentHealth(amt);
-    }
+
 
     public void moveTo(Location l) {
         setLocation(l);
     }
-
+    public final AbstractAction beInteractedWithBy(EntityInteractable ei){
+        return ei.beInteractedWithBy(this);
+    }
 
     public ActionMap interactWith(GameWorld gw){
         ActionMap allowedActions = new ActionMap();
@@ -68,11 +50,11 @@ public abstract class Entity implements Interactable, Interactor{
         this.location = location;
     }
 
-    public Direction getFacing() {
+    public Location getFacing() {
         return facing;
     }
 
-    public void setFacing(Direction facing) {
+    public void setFacing(Location facing) {
         this.facing = facing;
     }
 
@@ -106,5 +88,8 @@ public abstract class Entity implements Interactable, Interactor{
         allowedActions.put(
                 "NE",
                 gw.terrainBeInteractedToBy(this, location.northeast()));
+
     }
+
+
 }
