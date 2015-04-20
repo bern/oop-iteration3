@@ -1,17 +1,17 @@
-package game.model.entity;
+package game.model.game_world.terrain;
 
-import game.model.behavior.Interactable;
+
 import game.model.behavior.Interactor;
 import game.util.Location;
 
 import javax.swing.*;
 
-public class Npc extends Entity {
+public class Grass extends Terrain {
 
-
-    public Npc(Location l) {
+    public Grass(Location l) {
         super(l);
     }
+
 
     @Override
     public AbstractAction beInteractedWithBy(Interactor i) {
@@ -19,7 +19,7 @@ public class Npc extends Entity {
     }
 
     @Override
-    public AbstractAction interactWith(Interactable e) {
-        return e.beInteractedWithBy( this );
+    public String toString(){
+        return "Grass";
     }
 }

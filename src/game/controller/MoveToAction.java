@@ -17,6 +17,7 @@ public class MoveToAction extends GameAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         entity.moveTo(location);
     }
 }

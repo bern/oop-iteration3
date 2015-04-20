@@ -1,49 +1,39 @@
 package game.model.entity;
 
 
+import game.model.behavior.Interactable;
+import game.model.behavior.Interactor;
 import game.util.Location;
 
 import javax.swing.*;
 
 public class Mount extends Entity {
 
-    Character mountedCharacter;
+    Avatar mountedAvatar;
 
     public Mount(Location l) {
         super(l);
     }
 
+    public void mount(Avatar avatar) {
+        setMountedAvatar(avatar);
+    }
+
+    public Avatar getMountedAvatar() {
+        return mountedAvatar;
+    }
+
+    public void setMountedAvatar(Avatar mountedAvatar) {
+        this.mountedAvatar = mountedAvatar;
+    }
+
     @Override
-    public AbstractAction interactWith(Entity e) {
+    public AbstractAction beInteractedWithBy(Interactor i) {
         return null;
     }
 
     @Override
-    public AbstractAction interactWith(Mount m) {
-        return null;
-    }
-
-
-    @Override
-    public AbstractAction interactWith(Npc n) {
-        return null;
-    }
-
-    @Override
-    public AbstractAction interactWith(Character n) {
-        return null;
-    }
-
-    public void mount(Character character) {
-        setMountedCharacter(character);
-    }
-
-    public Character getMountedCharacter() {
-        return mountedCharacter;
-    }
-
-
-    public void setMountedCharacter(Character mountedCharacter) {
-        this.mountedCharacter = mountedCharacter;
+    public AbstractAction interactWith(Interactable e) {
+        return e.beInteractedWithBy( this );
     }
 }

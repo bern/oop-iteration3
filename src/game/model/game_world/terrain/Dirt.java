@@ -1,15 +1,14 @@
-package game.model.entity;
+package game.model.game_world.terrain;
 
-import game.model.behavior.Interactable;
 import game.model.behavior.Interactor;
 import game.util.Location;
 
 import javax.swing.*;
 
-public class Npc extends Entity {
 
+public class Dirt extends Terrain {
 
-    public Npc(Location l) {
+    public Dirt(Location l) {
         super(l);
     }
 
@@ -17,9 +16,8 @@ public class Npc extends Entity {
     public AbstractAction beInteractedWithBy(Interactor i) {
         return null;
     }
-
     @Override
-    public AbstractAction interactWith(Interactable e) {
-        return e.beInteractedWithBy( this );
+    public String toString(){
+        return "Dirt";
     }
 }
