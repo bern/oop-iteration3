@@ -2,7 +2,7 @@ package game.model.game_world;
 
 import game.Game;
 import game.model.MainModel;
-import game.model.behavior.Interactable;
+import game.model.behavior.EntityInteractable;
 import game.model.entity.Entity;
 import game.model.game_world.terrain.Terrain;
 import game.util.Location;
@@ -15,7 +15,7 @@ public class GameWorld extends MainModel {
     private int width;
 
     private Entity[][] entities;
-    private Interactable[][] itemsAndAreaEffects;
+    private EntityInteractable[][] itemsAndAreaEffects;
     private Terrain[][] terrains;
 
     private Entity currentEntity;
@@ -24,9 +24,19 @@ public class GameWorld extends MainModel {
         super(g);
         setWidth(t[0].length);
         setLength(t.length);
-        setCurrentEntity( e );
+        setCurrentEntity(e);
         setTerrains( t );
-        itemsAndAreaEffects = new Interactable[length][width];
+        itemsAndAreaEffects = new EntityInteractable[length][width];
+
+        int i = 0;
+        for(Terrain[] te: terrains){
+
+            for(Terrain t1: terrains[i]){
+                System.out.print(t1.toString());
+            }
+            i++;
+            System.out.println("");
+        }
 
     }
 
@@ -67,11 +77,11 @@ public class GameWorld extends MainModel {
         this.entities = entities;
     }
 
-    public Interactable[][] getItemsAndAreaEffects() {
+    public EntityInteractable[][] getItemsAndAreaEffects() {
         return itemsAndAreaEffects;
     }
 
-    public void setItemsAndAreaEffects(Interactable[][] itemsAndAreaEffects) {
+    public void setItemsAndAreaEffects(EntityInteractable[][] itemsAndAreaEffects) {
         this.itemsAndAreaEffects = itemsAndAreaEffects;
     }
 

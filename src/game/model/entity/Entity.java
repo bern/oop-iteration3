@@ -1,15 +1,15 @@
 package game.model.entity;
 
-import game.model.behavior.Interactable;
+import game.model.behavior.EntityInteractable;
 import game.model.behavior.Interactor;
-import game.model.entity.occupation.Occupation;
 import game.model.game_world.GameWorld;
 import game.util.Location;
 
 import javax.swing.*;
 
 
-public abstract class Entity implements Interactable, Interactor{
+public abstract class Entity implements EntityInteractable, Interactor{
+
     private Location location;
     private Location facing;
 
@@ -18,15 +18,13 @@ public abstract class Entity implements Interactable, Interactor{
         setFacing(l.south());
     }
 
-    public void modifyHealth(int health) {
-        //TODO
-    }
-
 
     public void moveTo(Location l) {
         setLocation(l);
     }
-
+    public final AbstractAction beInteractedWithBy(EntityInteractable ei){
+        return ei.beInteractedWithBy(this);
+    }
 
     public ActionMap interactWith(GameWorld gw){
         ActionMap allowedActions = new ActionMap();
@@ -90,5 +88,8 @@ public abstract class Entity implements Interactable, Interactor{
         allowedActions.put(
                 "NE",
                 gw.terrainBeInteractedToBy(this, location.northeast()));
+
     }
+
+
 }

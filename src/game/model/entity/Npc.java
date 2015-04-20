@@ -1,8 +1,6 @@
 package game.model.entity;
 
-import game.controller.DenyMoveAction;
-import game.model.behavior.Interactable;
-import game.model.behavior.Interactor;
+import game.model.behavior.EntityInteractable;
 import game.util.Location;
 
 import javax.swing.*;
@@ -14,19 +12,23 @@ public class Npc extends Entity {
         super(l);
     }
 
-
-    @Override
-    public AbstractAction interactWith(Interactable e) {
-        return e.beInteractedWithBy( this );
-    }
-
     @Override
     public AbstractAction beInteractedWithBy(Entity i) {
-        return new DenyMoveAction();
+        return null;
     }
 
     @Override
-    public AbstractAction beInteractedWithBy(Avatar a) {
-        return new DenyMoveAction();    //Change to TalkingAndDenyMoveAction?!?
+    public AbstractAction beInteractedWithBy(Avatar i) {
+        return null;
+    }
+
+    @Override
+    public AbstractAction beInteractedWithBy(Mount i) {
+        return null;
+    }
+
+    @Override
+    public AbstractAction interactWith(EntityInteractable e) {
+        return e.beInteractedWithBy(this);
     }
 }
