@@ -2,6 +2,9 @@ package game.model.entity;
 
 import game.model.behavior.Interactable;
 import game.model.behavior.Interactor;
+import game.model.entity.occupation.DefaultOccupation;
+import game.model.entity.occupation.Occupation;
+import game.model.game_world.Direction;
 import game.model.game_world.GameWorld;
 import game.util.Location;
 
@@ -11,13 +14,28 @@ import javax.swing.*;
 public abstract class Entity implements Interactable, Interactor{
 
     private Location location;
-    private Location facing;
+    private Direction facing;
+    private Occupation occupation;
 
     public Entity(Location l) {
         setLocation(l);
-        setFacing(l.south());
+        setFacing(Direction.DOWN);
+        occupation = new DefaultOccupation();
     }
 
+    public Entity(Location l, Occupation o) {
+        setLocation(l);
+        setFacing(Direction.DOWN);
+        occupation = o;
+    }
+    
+    public void takeDamage(int dmg) {
+        occupation.getStatContainer().modCurrentHealth(dmg * -1);
+    }
+    
+    public void healDamage(int amt) {
+        occupation.getStatContainer().modCurrentHealth(amt);
+    }
 
     public void moveTo(Location l) {
         setLocation(l);
@@ -50,11 +68,11 @@ public abstract class Entity implements Interactable, Interactor{
         this.location = location;
     }
 
-    public Location getFacing() {
+    public Direction getFacing() {
         return facing;
     }
 
-    public void setFacing(Location facing) {
+    public void setFacing(Direction facing) {
         this.facing = facing;
     }
 
