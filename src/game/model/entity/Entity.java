@@ -1,13 +1,14 @@
 package game.model.entity;
 
 import game.model.behavior.Interactable;
+import game.model.behavior.Interactor;
 import game.model.game_world.GameWorld;
 import game.util.Location;
 
 import javax.swing.*;
 
 
-public abstract class Entity implements Interactable {
+public abstract class Entity implements Interactable, Interactor{
 
     private Location location;
     private Location facing;

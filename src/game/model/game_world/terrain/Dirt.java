@@ -16,4 +16,8 @@ public class Dirt extends Terrain {
     public AbstractAction beInteractedWithBy(Interactor i) {
         return null;
     }
+    @Override
+    public String toString(){
+        return "Dirt";
+    }
 }

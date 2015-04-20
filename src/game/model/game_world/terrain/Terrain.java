@@ -18,4 +18,6 @@ public abstract class Terrain implements Interactable {
     public Location getLocation() {
         return location;
     }
+
+
 }

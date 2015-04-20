@@ -4,8 +4,7 @@ import game.Game;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.model.game_world.GameWorld;
-import game.model.game_world.terrain.Grass;
-import game.model.game_world.terrain.Terrain;
+import game.model.game_world.terrain.*;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -81,16 +80,16 @@ public class LoaderSaver {
                         terrains[y][x] = new Grass(new Location(x, y));
                         break;
                     case'M':
-                        terrains[y][x] = new Grass(new Location(x, y));
+                        terrains[y][x] = new Mountain(new Location(x, y));
                         break;
                     case'D':
-                        terrains[y][x] = new Grass(new Location(x, y));
+                        terrains[y][x] = new Dirt(new Location(x, y));
                         break;
                     case'R':
-                        terrains[y][x] = new Grass(new Location(x, y));
+                        terrains[y][x] = new River(new Location(x, y));
                         break;
                     case'W':
-                        terrains[y][x] = new Grass(new Location(x, y));
+                        terrains[y][x] = new Water(new Location(x, y));
                         break;
 
                 }
