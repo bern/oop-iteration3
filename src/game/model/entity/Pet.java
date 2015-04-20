@@ -13,13 +13,19 @@ public class Pet extends Entity {
         super(l);
     }
 
-    @Override
-    public AbstractAction beInteractedWithBy(Interactor i) {
-        return null;
-    }
 
     @Override
     public AbstractAction interactWith(Interactable e) {
         return e.beInteractedWithBy( this );
+    }
+
+    @Override
+    public AbstractAction beInteractedWithBy(Entity i) {
+        return null;
+    }
+
+    @Override
+    public AbstractAction beInteractedWithBy(Avatar a) {
+        return null;
     }
 }
