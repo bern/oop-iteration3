@@ -34,6 +34,10 @@ public abstract class Entity implements Interactable, Interactor{
     public void healDamage(int amt) {
         occupation.getStatContainer().modCurrentHealth(amt);
     }
+    
+    public void modifyHealth(int amt) {
+        occupation.getStatContainer().modCurrentHealth(amt);
+    }
 
     public void moveTo(Location l) {
         setLocation(l);
