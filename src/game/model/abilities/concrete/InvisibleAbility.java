@@ -23,7 +23,7 @@ public class InvisibleAbility extends BoonAbility{
         InvisibleEffect ef = createStatusEffect();
         ef.setOwner(caller);
         ef.applyTo(caller);
-        Game.getInstance().getActiveWorld().addEffect(ef);
+        //Game.getInstance().getActiveWorld().addEffect(ef);
     }
     
 }

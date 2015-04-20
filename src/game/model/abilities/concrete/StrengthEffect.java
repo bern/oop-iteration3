@@ -20,12 +20,12 @@ public class StrengthEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-        getVictim().modStrength(str * -1);
+        //getVictim().modStrength(str * -1);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        victim.modStrength(str);
+        //victim.modStrength(str);
         setVictim(victim);
     }
     

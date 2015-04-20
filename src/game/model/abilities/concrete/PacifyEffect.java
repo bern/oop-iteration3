@@ -17,12 +17,12 @@ public class PacifyEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-        getVictim().setPacified(false);
+        //getVictim().setPacified(false);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        victim.setPacified(true);
+        //victim.setPacified(true);
         setVictim(victim);
     }
     

@@ -18,12 +18,12 @@ public class ParalyzeEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-        getVictim().setParalyzed(false);
+        //getVictim().setParalyzed(false);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        victim.setParalyzed(true);
+        //victim.setParalyzed(true);
         setVictim(victim);
     }
 }
