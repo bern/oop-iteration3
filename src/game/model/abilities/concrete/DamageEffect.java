@@ -20,7 +20,7 @@ public class DamageEffect extends StatusEffect {
 
     @Override
     public void applyTo(Entity victim) {
-        //victim.takeDamage(damage);
+        victim.takeDamage(damage);
     }
     
 }
