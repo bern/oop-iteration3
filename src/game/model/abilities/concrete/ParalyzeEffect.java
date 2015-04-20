@@ -15,6 +15,11 @@ public class ParalyzeEffect extends TimedEffect {
     public ParalyzeEffect(long stick) {
         super(stick);
     }
+    
+    @Override
+    public void reapply() {
+        //getVictim().setParalyzed(true);
+    }
 
     @Override
     public void reverseEffect() {

@@ -17,6 +17,11 @@ public class QuickenEffect extends TimedEffect {
         super(time);
         strength = str;
     }
+    
+    @Override
+    public void reapply() {
+        //getVictim().setSpeed(strength);
+    }
 
     @Override
     public void reverseEffect() {

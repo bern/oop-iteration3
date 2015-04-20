@@ -26,5 +26,10 @@ public class FearEffect extends TimedEffect {
         //victim.setAfraid(true);
         setVictim(victim);
     }
+
+    @Override
+    public void reapply() {
+        //getVictim().setAfraid(true);
+    }
     
 }
