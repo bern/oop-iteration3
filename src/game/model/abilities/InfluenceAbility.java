@@ -3,6 +3,7 @@
  */
 package game.model.abilities;
 
+import game.model.entity.Entity;
 import game.model.game_world.Tile;
 import java.util.List;
 
@@ -12,12 +13,12 @@ import java.util.List;
  */
 public abstract class InfluenceAbility extends Ability {
     protected abstract int getStrength();
-    protected abstract List<Tile> getAffectedTiles();
+    protected abstract List<Tile> getAffectedTiles(Entity caller);
     protected abstract StatusEffect createStatusEffect();
-    protected void affectTiles() {
-        for(Tile t : getAffectedTiles()) {
+    protected void affectTiles(Entity caller, StatusEffect ef) {
+        for(Tile t : getAffectedTiles(caller)) {
             /*
-            if(t.entityOn() != null) t.entityOn().applyEffect(createStatusEffect());
+            if(t.entityOn() != null) t.entityOn().applyEffect(ef);
             */
         }
     }

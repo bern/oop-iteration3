@@ -14,13 +14,21 @@ import javax.swing.*;
 
 public class Game {
 
+    private static Game instance = null;
     private MainModel model;
+    private GameWorld activeWorld;
     private GameWorld pausedWorld;
     private JFrame frame;
     private JComponent view;
     private LoaderSaver loaderSaver;
+    
+    public static Game getInstance() {
+        if(instance != null) return instance;
+        instance = new Game();
+        return instance;
+    }
 
-    public Game (){
+    private Game (){
         initializeJFrame(new JFrame("Dave The Destroyer"));
         initializeLoaderSaver();
     }
@@ -53,6 +61,7 @@ public class Game {
     public void startGame(){
     	GameWorld m = loaderSaver.loadNewGameWorld( this);
         //GameWorld m = new GameWorld( this );
+        activeWorld = m;
         update(m);
     }
 
@@ -84,7 +93,10 @@ public class Game {
     public void controls(){
         // TODO
     }
-
+    
+    public GameWorld getActiveWorld() {
+        return activeWorld;
+    }
 
     private ComponentInputMap loadInputMap( JComponent view ){
         return loaderSaver.loadDefaultMenuInputMap( view );

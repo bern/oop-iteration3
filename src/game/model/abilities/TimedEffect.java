@@ -18,6 +18,11 @@ public abstract class TimedEffect extends StatusEffect {
         removeAt = System.currentTimeMillis() + (stickTime * 1000);
     }
     
+    public TimedEffect(long stickTime) {
+        super();
+        removeAt = System.currentTimeMillis() + (stickTime * 1000);
+    }
+    
     public TimedEffect() {
         super();
         removeAt = System.currentTimeMillis() + 1000;

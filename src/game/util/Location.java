@@ -1,5 +1,7 @@
 package game.util;
 
+import game.model.game_world.Direction;
+
 public class Location {
 
     private int x, y;
@@ -29,7 +31,9 @@ public class Location {
         return new Location(getX(), getY()+1);
     }
 
-
+    public Location dir(Direction d) {
+        return new Location(getX() + d.getX(), getY() + d.getY());
+    }
 
     public int getX() {
         return x;
