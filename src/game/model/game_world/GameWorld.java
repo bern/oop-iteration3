@@ -96,4 +96,10 @@ public class GameWorld extends MainModel {
     	return terrains[l.getY()][l.getX()].toString();
     	
     }
+    
+//    public Terrain getTerrainAtLocation(Location l) {
+//    	
+//    	return terrains[l.getY()][l.getX()];
+//    	
+//    }
 }

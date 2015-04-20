@@ -2,6 +2,8 @@ package game.view;
 
 
 import game.model.game_world.GameWorld;
+import game.model.game_world.terrain.Grass;
+import game.model.game_world.terrain.Terrain;
 import game.util.Location;
 
 import javax.imageio.ImageIO;
@@ -83,6 +85,9 @@ public class GameWorldView  extends JComponent {
             	Location l = new Location(row,col);
             	String s = map.getTerrainAtLocation(l);
             	
+            	
+            	//drawGameObject(g2d, t,centerX + changeInX, centerY + changeInY);
+            	
             	if (s == "Mountain") {
             		g2d.drawImage(ImageResources.mountain.getImage(), centerX + changeInX, centerY + changeInY, null);
             	} else if (s == "Grass" ) {
@@ -101,6 +106,8 @@ public class GameWorldView  extends JComponent {
             centerY = centerY + Y_OFFSET;
 
         }
+        
+       
 
 
 
@@ -109,6 +116,14 @@ public class GameWorldView  extends JComponent {
     }
     
    
-
+//    private void drawGameObject( Graphics2D g2d, Grass g, int x, int y){
+//    	terrain.prepareForDraw(this);
+//    	
+//    	///terrain
+//    	gameWorldView.draw(this);
+//    	
+//    	
+//    	g2d.drawImage(ImageResources.grass.getImage(), x, y, null);
+//    }
 
 }
