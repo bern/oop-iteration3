@@ -3,6 +3,7 @@
  */
 package game.model.abilities.concrete;
 
+import game.Game;
 import game.model.abilities.TimedEffect;
 import game.model.entity.Entity;
 
@@ -25,6 +26,7 @@ public class FearEffect extends TimedEffect {
     public void applyTo(Entity victim) {
         //victim.setAfraid(true);
         setVictim(victim);
+        Game.getInstance().getActiveWorld().addEffect(this);
     }
 
     @Override

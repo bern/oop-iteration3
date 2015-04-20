@@ -3,6 +3,7 @@
  */
 package game.model.abilities.concrete;
 
+import game.Game;
 import game.model.abilities.TimedEffect;
 import game.model.entity.Entity;
 
@@ -29,6 +30,7 @@ public class InvisibleEffect extends TimedEffect {
     public void applyTo(Entity victim) {
        //victim.setInvisible(true);
        setVictim(victim);
+       Game.getInstance().getActiveWorld().addEffect(this);
     }
     
 }

@@ -3,6 +3,7 @@
  */
 package game.model.abilities.concrete;
 
+import game.Game;
 import game.model.abilities.TimedEffect;
 import game.model.entity.Entity;
 
@@ -30,5 +31,6 @@ public class ParalyzeEffect extends TimedEffect {
     public void applyTo(Entity victim) {
         //victim.setParalyzed(true);
         setVictim(victim);
+        Game.getInstance().getActiveWorld().addEffect(this);
     }
 }

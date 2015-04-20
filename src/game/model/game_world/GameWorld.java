@@ -2,6 +2,10 @@ package game.model.game_world;
 
 import game.Game;
 import game.model.MainModel;
+import game.model.abilities.EffectBin;
+import game.model.abilities.Projectile;
+import game.model.abilities.ProjectileBin;
+import game.model.abilities.TimedEffect;
 import game.model.behavior.EntityInteractable;
 import game.model.entity.Entity;
 import game.model.game_world.terrain.Terrain;
@@ -17,6 +21,9 @@ public class GameWorld extends MainModel {
     private Entity[][] entities;
     private EntityInteractable[][] itemsAndAreaEffects;
     private Terrain[][] terrains;
+    
+    private ProjectileBin projectiles;
+    private EffectBin effects;
 
     private Entity currentEntity;
 
@@ -27,7 +34,18 @@ public class GameWorld extends MainModel {
         setCurrentEntity( e );
         setTerrains( t );
         itemsAndAreaEffects = new EntityInteractable[length][width];
+        
+        projectiles = new ProjectileBin();
+        effects = new EffectBin();
 
+    }
+    
+    public void addProjectile(Projectile p) {
+        projectiles.addProjectile(p);
+    }
+    
+    public void addEffect(TimedEffect ef) {
+        effects.addEffect(ef);
     }
     
     public Entity getEntityAt(Location l) {

@@ -3,6 +3,7 @@
  */
 package game.model.abilities.concrete;
 
+import game.model.abilities.StatusEffect;
 import game.model.abilities.TimedEffect;
 import game.model.entity.Entity;
 
@@ -23,6 +24,7 @@ public class TrapDisarmEffect extends TimedEffect {
     public void applyTo(Trap t) {
         t.disarm();
         setTrapVictim(t);
+        Game.getInstance().getActiveWorld().addEffect(this);
     }
     */
 

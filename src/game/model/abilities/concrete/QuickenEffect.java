@@ -3,6 +3,7 @@
  */
 package game.model.abilities.concrete;
 
+import game.Game;
 import game.model.abilities.TimedEffect;
 import game.model.entity.Entity;
 
@@ -32,6 +33,7 @@ public class QuickenEffect extends TimedEffect {
     public void applyTo(Entity victim) {
         //victim.setSpeed(strength);
         setVictim(victim);
+        Game.getInstance().getActiveWorld().addEffect(this);
     }
     
 }
