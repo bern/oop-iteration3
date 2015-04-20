@@ -1,6 +1,5 @@
 package game.model.game_world.terrain;
 
-import game.model.behavior.Interactor;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.util.Location;

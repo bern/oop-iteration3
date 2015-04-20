@@ -1,8 +1,7 @@
 package game.model.entity;
 
 import game.controller.DenyMoveAction;
-import game.model.behavior.Interactable;
-import game.model.behavior.Interactor;
+import game.model.behavior.EntityInteractable;
 import game.model.item.TakeableItem;
 import game.util.Location;
 
@@ -14,12 +13,6 @@ public class Avatar extends Entity {
         super(l);
     }
 
-
-
-    @Override
-    public AbstractAction interactWith(Interactable e) {
-        return e.beInteractedWithBy( this );
-    }
     //Add Item to inventory
     public void addTakeable(TakeableItem item) {
         //TODO.

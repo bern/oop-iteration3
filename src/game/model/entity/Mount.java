@@ -1,8 +1,7 @@
 package game.model.entity;
 
 
-import game.model.behavior.Interactable;
-import game.model.behavior.Interactor;
+import game.model.behavior.EntityInteractable;
 import game.util.Location;
 
 import javax.swing.*;
@@ -27,9 +26,7 @@ public class Mount extends Entity {
         this.mountedAvatar = mountedAvatar;
     }
 
-
-    @Override
-    public AbstractAction interactWith(Interactable e) {
+    public AbstractAction interactWith(EntityInteractable e) {
         return e.beInteractedWithBy( this );
     }
 

@@ -1,8 +1,7 @@
 package game.model.entity;
 
 
-import game.model.behavior.Interactable;
-import game.model.behavior.Interactor;
+import game.model.behavior.EntityInteractable;
 import game.util.Location;
 
 import javax.swing.*;
@@ -11,12 +10,6 @@ public class Pet extends Entity {
 
     public Pet(Location l) {
         super(l);
-    }
-
-
-    @Override
-    public AbstractAction interactWith(Interactable e) {
-        return e.beInteractedWithBy( this );
     }
 
     @Override

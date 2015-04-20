@@ -1,8 +1,7 @@
 package game.model.entity;
 
 import game.controller.DenyMoveAction;
-import game.model.behavior.Interactable;
-import game.model.behavior.Interactor;
+import game.model.behavior.EntityInteractable;
 import game.util.Location;
 
 import javax.swing.*;
@@ -12,12 +11,6 @@ public class Npc extends Entity {
 
     public Npc(Location l) {
         super(l);
-    }
-
-
-    @Override
-    public AbstractAction interactWith(Interactable e) {
-        return e.beInteractedWithBy( this );
     }
 
     @Override

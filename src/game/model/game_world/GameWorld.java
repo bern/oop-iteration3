@@ -2,7 +2,7 @@ package game.model.game_world;
 
 import game.Game;
 import game.model.MainModel;
-import game.model.behavior.Interactable;
+import game.model.behavior.EntityInteractable;
 import game.model.entity.Entity;
 import game.model.game_world.terrain.Terrain;
 import game.util.Location;
@@ -15,7 +15,7 @@ public class GameWorld extends MainModel {
     private int width;
 
     private Entity[][] entities;
-    private Interactable[][] itemsAndAreaEffects;
+    private EntityInteractable[][] itemsAndAreaEffects;
     private Terrain[][] terrains;
 
     private Entity currentEntity;
@@ -26,17 +26,17 @@ public class GameWorld extends MainModel {
         setLength(t.length);
         setCurrentEntity( e );
         setTerrains( t );
-        itemsAndAreaEffects = new Interactable[length][width];
+        itemsAndAreaEffects = new EntityInteractable[length][width];
 
     }
 
     @Override
     public ActionMap updateValidActions() {
         // entity look at the map around you! can you even move brah?! what can you with things around you?
-        return currentEntity.interactWith( this );
+        return currentEntity.updateValidActions( this );
     }
 
-    public AbstractAction terrainBeInteractedToBy(Entity entity, Location location) {
+    public AbstractAction terrainBeInteractedWithBy(Entity entity, Location location) {
         // entity interact with terrains... CAN YOU MOVE ON THEM?
         int x = location.getX();
         int y = location.getY();
@@ -67,11 +67,11 @@ public class GameWorld extends MainModel {
         this.entities = entities;
     }
 
-    public Interactable[][] getItemsAndAreaEffects() {
+    public EntityInteractable[][] getItemsAndAreaEffects() {
         return itemsAndAreaEffects;
     }
 
-    public void setItemsAndAreaEffects(Interactable[][] itemsAndAreaEffects) {
+    public void setItemsAndAreaEffects(EntityInteractable[][] itemsAndAreaEffects) {
         this.itemsAndAreaEffects = itemsAndAreaEffects;
     }
 
