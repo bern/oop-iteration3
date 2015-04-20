@@ -11,7 +11,8 @@ import game.model.entity.stat.StatContainer;
  */
 public class MountOccupation extends Occupation {
     public MountOccupation () {
-		statContainer = new StatContainer();
+		super();
+		statContainer = new StatContainer(getArmory());
 		
 		statContainer.setLivesLeft(1);
 		statContainer.setStrength(10);
