@@ -24,192 +24,112 @@ import java.io.IOException;
 
 public class GameWorldView  extends JComponent {
     private GameWorld map;
-    private boolean isMapLoaded;
-    private BufferedImage[][] mapImages;
     private static int MAX_ROWS = 60;
     private static int MAX_COLMS = 60;
-    private  int X_OFFSET = 25;
-    private  int Y_OFFSET = 15;
+    private int pixelX;
+    private int pixelY;
     private int centerX;
     private int centerY;
     
-    private Graphics2D g2d;
+    public int getPixelX() {
+		return pixelX;
+	}
+
+	public void setPixelX(int pixelX) {
+		this.pixelX = pixelX;
+	}
+
+	public int getPixelY() {
+		return pixelY;
+	}
+
+	public void setPixelY(int pixelY) {
+		this.pixelY = pixelY;
+	}
+
+	public int getCenterX() {
+		return centerX;
+	}
+
+	public void setCenterX(int centerX) {
+		this.centerX = centerX;
+	}
+
+	public int getCenterY() {
+		return centerY;
+	}
+
+	public void setCenterY(int centerY) {
+		this.centerY = centerY;
+	}
+
+	private Graphics2D g2d;
 
     public GameWorldView (GameWorld m){
-    	map = m;
-    	loadMap();
-    	
-    	centerX = getWidth()/2;
-        centerY = getHeight()/2;
-    	
+    	map = m;  	
     }
 
     @Override
-    public void paint( Graphics g){
+    public void paint(Graphics g){
+    	super.paint(g);
     	
-    	centerX = getWidth()/2;
-        centerY = getHeight()/2;
-        
-        super.paint(g);
-
-        g2d = (Graphics2D) g;
+    	g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
+    	
+        setCenterX(getWidth()/2);
+        setCenterY(getHeight()/2);
+
+        setPixelX(centerX);
+        setPixelY(centerY);
         
         drawBackground(g2d);
         drawMap(g2d);
-
-
-
     }
 
     private void drawBackground( Graphics2D g ) {
-        
-
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
     }
-
-    public void loadMap() {
-    	GameWorldParser rl = new GameWorldParser();
-    	mapImages = rl.readGameWorld();
-    }
     
     public void drawMap(Graphics2D g2d) {
-        
-
-
-       
-    	X_OFFSET = getWidth()/2;
-		Y_OFFSET = getHeight()/2;
-    	
+    	//get Entity Location
     	Location EL = new Location(32,11);
     	int eR = EL.getX();
     	int eC = EL.getY();
     	
-    	
-    	
     	map.prepareForDrawAt(EL,this);
     	
     	printTileNeighbors(EL);
-
-//    	
-    	
-//    	//NW
-//    	X_OFFSET = 0;
-//    	Y_OFFSET = 30;
-//    	
-//    	l = new Location(eR,eC+1);
-//    	map.prepareForDrawAt(l,this);
-//    	
-//    	//SE
-//    	X_OFFSET = 0;
-//    	Y_OFFSET = 30;
-//    	
-//    	l = new Location(eR,eC+1);
-//    	map.prepareForDrawAt(l,this);
-//    	
-//    	//SW
-//    	X_OFFSET = 0;
-//    	Y_OFFSET = 30;
-//    	
-//    	l = new Location(eR,eC+1);
-//    	map.prepareForDrawAt(l,this);
-        
-//        int i = 0, j = 0;
-//        
-//        for (int row = 0; row < MAX_ROWS; row++) {
-//
-//            for (int col = 0; col < MAP_COLMS; col++){
-//            	
-//            	
-//            	
-//            	
-//            	Location l = new Location(row,col);
-//            	map.prepareForDrawAt(l,this);
-//            	
-//            	
-//            	//drawGameObject(g2d, t,centerX + changeInX, centerY + changeInY);
-//            	
-////            	if (s == "Mountain") {
-////
-////            		g2d.drawImage(ImageResources.mountain.getImage(), centerX + changeInX, centerY + changeInY, null);
-////            	} else if (s == "Grass" ) {
-////            		g2d.drawImage(ImageResources.grass.getImage(), centerX + changeInX, centerY + changeInY, null);
-////            	} else if (s == "Dirt" ) {
-////            		g2d.drawImage(ImageResources.dirt.getImage(), centerX + changeInX, centerY + changeInY, null);
-////            	} else if (s == "River" ) {
-////            		g2d.drawImage(ImageResources.water.getImage(), centerX + changeInX, centerY + changeInY, null);
-////            	} else if (s == "Water" ) {
-////            		g2d.drawImage(ImageResources.water.getImage(), centerX + changeInX, centerY + changeInY, null);
-////            	}
-//                
-//                ++i;
-//            }
-//            centerX = centerX - X_OFFSET;
-//            centerY = centerY + Y_OFFSET;
-//
-//        }
-        
-        centerX = getWidth()/2;
-        centerY = 0;
-
     }
     
    
     public void drawGameObject( Grass g, Location l){
-
-    	int row = 1;;
-    	int col = 1;
-    	int changeInX = X_OFFSET * col;
-    	int changeInY = Y_OFFSET * col;
-    	
-    	g2d.drawImage(ImageResources.grass.getImage(), changeInX, changeInY, null);
+    	g2d.drawImage(ImageResources.grass.getImage(), pixelX, pixelY, null);
     }
     
     public void drawGameObject( Water w, Location l){
-
-    	int row = 1;;
-    	int col = 1;
-    	int changeInX = X_OFFSET * col;
-    	int changeInY = Y_OFFSET * col;
-    	
-    	g2d.drawImage(ImageResources.water.getImage(), changeInX, changeInY, null);
+    	g2d.drawImage(ImageResources.water.getImage(), pixelX, pixelY, null);
     }
 
     public void drawGameObject( Mountain m, Location l){
-    	int row = 1;;
-    	int col = 1;
-    	int changeInX = X_OFFSET * col;
-    	int changeInY = Y_OFFSET * col;
-	
-    	g2d.drawImage(ImageResources.mountain.getImage(), changeInX, changeInY, null);
+    	g2d.drawImage(ImageResources.mountain.getImage(), pixelX, pixelY, null);
     }
     
     public void drawGameObject( Dirt d, Location l){
-
-    	int row = 1;;
-    	int col = 1;
-    	int changeInX = X_OFFSET * col;
-    	int changeInY = Y_OFFSET * col;
-    	
-    	g2d.drawImage(ImageResources.dirt.getImage(), changeInX, changeInY, null);
+    	g2d.drawImage(ImageResources.dirt.getImage(), pixelX, pixelY, null);
     }
     
     public void drawGameObject( River r, Location l){
-
-    	int row = 1;;
-    	int col = 1;
-    	int changeInX = X_OFFSET * col;
-    	int changeInY = Y_OFFSET * col;
-    	
-    	g2d.drawImage(ImageResources.dirt.getImage(), changeInX, changeInY, null);
+    	g2d.drawImage(ImageResources.dirt.getImage(), pixelX, pixelY, null);
     }
     
     
+    /*
+     * this method uses BFS to find near by tiles, print them, and not reprinting them.
+     */
+    
     public void printTileNeighbors(Location tileLocation) {
-    	//System.out.println("start");
-    	
     	Set<Location> visited = new HashSet<Location>();
     	Queue<Location> bfs = new LinkedList<Location>();
     	Queue<Integer> pixelLocationX = new LinkedList<Integer>();
@@ -242,16 +162,12 @@ public class GameWorldView  extends JComponent {
     	
     	int SW_X_OFFSET = -25;
     	int SW_Y_OFFSET = 15;
+    	
     	int i = 0;
+    	
     	while (!bfs.isEmpty() && i < 91) {
-    		
-    		
-    		
-    		
     		++i;
     		currentLocation = bfs.remove();
-    		
-    		//System.out.println("new node: " + currentLocation.toString() );
     		
     		int eR = currentLocation.getX();
         	int eC = currentLocation.getY();
@@ -259,22 +175,16 @@ public class GameWorldView  extends JComponent {
         	int pixY = pixelLocationY.remove();
         
 
-        	
+        	//north
         	Location n = new Location(eR-1,eC-1);
         	
         	if (!visited.contains(n) && isValidLocation(n)) {
-        		//System.out.println("added n" + n.toString() );
+        		setPixelX(pixX+N_X_OFFSET);
+        		setPixelY(pixY+N_Y_OFFSET);
         		
-        		
-        		X_OFFSET = (pixX+N_X_OFFSET);
-        		Y_OFFSET = (pixY+N_Y_OFFSET);
-        		
-        		pixelLocationX.add(X_OFFSET);
-            	pixelLocationY.add(Y_OFFSET);
-            	//north
-        		//N_X_OFFSET += N_X_OFFSET;
-        		//N_Y_OFFSET += N_Y_OFFSET;
-            	
+        		pixelLocationX.add(pixelX);
+            	pixelLocationY.add(pixelY);
+
         		map.prepareForDrawAt(n,this);
         		visited.add(n);
             	bfs.add(n);
@@ -283,18 +193,14 @@ public class GameWorldView  extends JComponent {
         	
         	
         	//south
-        	
         	Location s = new Location(eR+1,eC+1);
         	
         	if (!visited.contains(s) && isValidLocation(s)) {
-        		//System.out.println("added s" + s.toString());
-        		X_OFFSET = (pixX+S_X_OFFSET);
-        		Y_OFFSET = (pixY+S_Y_OFFSET);
+        		setPixelX(pixX+S_X_OFFSET);
+        		setPixelY(pixY+S_Y_OFFSET);
         		
-        		pixelLocationX.add(X_OFFSET);
-            	pixelLocationY.add(Y_OFFSET);
-        		//S_X_OFFSET += S_X_OFFSET;
-        		//S_Y_OFFSET += S_Y_OFFSET;
+        		pixelLocationX.add(pixelX);
+            	pixelLocationY.add(pixelY);
         		
         		map.prepareForDrawAt(s,this);
         		
@@ -304,19 +210,15 @@ public class GameWorldView  extends JComponent {
         	
         	
         	//NE
-        	
         	Location ne = new Location(eR-1,eC);
         	
         	if (!visited.contains(ne) && isValidLocation(ne)) {
-        		//System.out.println("added ne" + ne.toString());
+        		setPixelX(pixX+NE_X_OFFSET);
+        		setPixelY(pixY+NE_Y_OFFSET);
         		
-        		X_OFFSET = (pixX+NE_X_OFFSET);
-        		Y_OFFSET = (pixY+NE_Y_OFFSET);
-        		
-        		pixelLocationX.add(X_OFFSET);
-            	pixelLocationY.add(Y_OFFSET);
-        		//NE_X_OFFSET += NE_X_OFFSET;
-        		//NE_Y_OFFSET += NE_Y_OFFSET;
+        		pixelLocationX.add(pixelX);
+            	pixelLocationY.add(pixelY);
+
         		
         		map.prepareForDrawAt(ne,this);
         		
@@ -325,18 +227,16 @@ public class GameWorldView  extends JComponent {
         	}
         	
         	//SE
-        	
         	Location se = new Location(eR,eC+1);
         	
         	if (!visited.contains(se) && isValidLocation(se)) {
-        		//System.out.println("added se" + se.toString());
-        		X_OFFSET = (pixX+SE_X_OFFSET);
-        		Y_OFFSET = (pixY+SE_Y_OFFSET);
         		
-        		pixelLocationX.add(X_OFFSET);
-            	pixelLocationY.add(Y_OFFSET);
-        		//SE_X_OFFSET += SE_X_OFFSET;
-        		//SE_Y_OFFSET += SE_Y_OFFSET;
+        		setPixelX(pixX+SE_X_OFFSET);
+        		setPixelY(pixY+SE_Y_OFFSET);
+        		
+        		pixelLocationX.add(pixelX);
+            	pixelLocationY.add(pixelY);
+        		
         		
         		map.prepareForDrawAt(se,this);
         		
@@ -347,18 +247,15 @@ public class GameWorldView  extends JComponent {
 
         	
         	//NW
-        	
         	Location nw = new Location(eR,eC-1);
         	
         	if (!visited.contains(nw) && isValidLocation(nw)) {
-        		//System.out.println("added nw" + nw.toString());
-        		X_OFFSET = (pixX+NW_X_OFFSET);
-        		Y_OFFSET = (pixY+NW_Y_OFFSET);
+        		setPixelX(pixX+NW_X_OFFSET);
+        		setPixelY(pixY+NW_Y_OFFSET);
         		
-        		pixelLocationX.add(X_OFFSET);
-            	pixelLocationY.add(Y_OFFSET);
-        		//NW_X_OFFSET += NW_X_OFFSET;
-        		//NW_Y_OFFSET += NW_Y_OFFSET;
+        		pixelLocationX.add(pixelX);
+            	pixelLocationY.add(pixelY);
+        		
         		
         		map.prepareForDrawAt(nw,this);
         		
@@ -369,19 +266,14 @@ public class GameWorldView  extends JComponent {
         	
         	
         	//SW
-        	
-        	
         	Location sw = new Location(eR+1,eC);
         	
         	if (!visited.contains(sw) && isValidLocation(sw)) {
-        		//System.out.println("added sw" + sw.toString());
-        		X_OFFSET = (pixX+SW_X_OFFSET);
-        		Y_OFFSET = (pixY+SW_Y_OFFSET);
+        		setPixelX(pixX+SW_X_OFFSET);
+        		setPixelY(pixY+SW_Y_OFFSET);
         		
-        		pixelLocationX.add(X_OFFSET);
-            	pixelLocationY.add(Y_OFFSET);
-        		//SW_X_OFFSET += SW_X_OFFSET;
-        		//SW_Y_OFFSET += SW_Y_OFFSET;
+        		pixelLocationX.add(pixelX);
+            	pixelLocationY.add(pixelY);
         		
         		map.prepareForDrawAt(sw,this);
         		
@@ -389,7 +281,6 @@ public class GameWorldView  extends JComponent {
             	bfs.add(sw);
         	}
     	}
-    	//System.out.println("end");
     	
     }
     
