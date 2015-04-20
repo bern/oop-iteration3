@@ -5,10 +5,14 @@ import game.model.MainModel;
 import game.model.game_world.GameWorld;
 import game.model.menu.AvatarCreationMenu;
 import game.model.menu.GameMenu;
+import game.model.menu.KeyBindingMenu;
 import game.model.menu.MainMenu;
+import game.util.KeyBindings;
 import game.util.LoaderSaver;
 import game.view.GameWorldView;
 import game.view.menu_view.MenuView;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
@@ -21,6 +25,11 @@ public class Game {
     private JFrame frame;
     private JComponent view;
     private LoaderSaver loaderSaver;
+    private String binding = null;
+    
+    public void setBinding(String b) {
+        binding = b;
+    }
     
     public static Game getInstance() {
         if(instance != null) return instance;
@@ -91,7 +100,8 @@ public class Game {
     }
 
     public void controls(){
-        // TODO
+        KeyBindingMenu m = new KeyBindingMenu( this );
+        update(m);
     }
     
     public GameWorld getActiveWorld() {
@@ -99,7 +109,7 @@ public class Game {
     }
 
     private ComponentInputMap loadInputMap( JComponent view ){
-        return loaderSaver.loadDefaultMenuInputMap( view );
+        return KeyBindings.getInstance().loadInputMap( view );
     }
 
     private void update(){
@@ -110,8 +120,7 @@ public class Game {
         frame.repaint();
     }
 
-
-    private void update(GameMenu m){
+    public void update(GameMenu m){
         setModel( m );
         setView(new MenuView(m));
     }
@@ -125,13 +134,34 @@ public class Game {
         if (view != null)
             frame.remove(view);
         this.view = v;
-        view.setInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW, loadInputMap(v));
+        if(binding == null) {
+            view.setInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW, loadInputMap(v));
+        } else {
+        
+        KeyAdapter key=new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                boolean s = KeyBindings.getInstance().bindKey(KeyStroke.getKeyStrokeForEvent(e), binding);
+                if(!s) ((GameMenu) getModel()).setSubtitle("Could not bind key.");
+                else ((GameMenu) getModel()).setSubtitle("Bound key!");
+                ((GameMenu) getModel()).updateOptions();
+                binding = null;
+                frame.removeKeyListener(this);
+                update((GameMenu) getModel());
+            }            
+        };
+        frame.addKeyListener(key);
+        
+        }
+        
         frame.add(view);
         frame.revalidate();
     }
 
     private void setModel(MainModel model) {
         this.model = model;
+    }
+    public MainModel getModel() {
+        return model;
     }
     private void initializeLoaderSaver(){
         loaderSaver = new LoaderSaver();

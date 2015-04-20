@@ -33,4 +33,14 @@ public class PauseMenu extends GameMenu {
                 break;
         }
     }
+    
+    public void back() {
+        getGame().continueGame();
+    }
+
+    @Override
+    public void updateOptions() {
+        options = new String[]{ "Continue", "Save Game", "Controls", "Main Menu"};
+        super.setOptions(options);
+    }
 }

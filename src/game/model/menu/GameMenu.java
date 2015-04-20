@@ -1,6 +1,7 @@
 package game.model.menu;
 
 import game.Game;
+import game.controller.menu_actions.BackAction;
 import game.controller.menu_actions.DownAction;
 import game.controller.menu_actions.SelectAction;
 import game.controller.menu_actions.UpAction;
@@ -24,6 +25,8 @@ public abstract class GameMenu extends MainModel {
         selectedOption = 0;
 
     }
+    
+    public abstract void updateOptions();
 
     public String getTitle(){
         return title;
@@ -37,16 +40,20 @@ public abstract class GameMenu extends MainModel {
         this.title = title;
     }
 
-    protected void setSubtitle(String subtitle) {
+    public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
     }
 
-    protected void setOptions(String[] o){
+    public void setOptions(String[] o){
         options = o;
     }
 
     public String[] getOptions(){
         return  options;
+    }
+    
+    public String getOption(int i) {
+        return options[i];
     }
 
     public String getSelectedOption(){
@@ -75,6 +82,7 @@ public abstract class GameMenu extends MainModel {
     }
 
     public abstract void select();
+    public abstract void back();
 
 
     @Override
@@ -83,6 +91,7 @@ public abstract class GameMenu extends MainModel {
         actionMap.put("S", new DownAction(this));
         actionMap.put("N", new UpAction(this));
         actionMap.put("select", new SelectAction(this));
+        actionMap.put("pause", new BackAction(this));
         return  actionMap;
 
     }

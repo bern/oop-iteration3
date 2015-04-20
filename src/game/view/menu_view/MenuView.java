@@ -19,13 +19,18 @@ public class MenuView extends JComponent {
 
         super.paint(g);
         drawBackground(g);
-        int x = getHeight()/2;
+        //int x = getHeight()/2;
+        int x = getHeight()/3;
         int y = getHeight()/2 - 20;
 
         drawTitles(g, x, y);
-
-        for ( String option : gameMenu.getOptions() ){
-
+        
+        //for ( String option : gameMenu.getOptions() ){
+        int beginning = Math.max(0, gameMenu.getSelectedIndex() - 2);
+        int end = Math.min(beginning + 3, gameMenu.getOptions().length);
+        
+        for(int i = beginning; i < end; i++) {
+               String option = gameMenu.getOption(i);
             if(option.equals(gameMenu.getSelectedOption())){
                 drawOption(g, x, y, option, true );
             } else {
@@ -55,11 +60,13 @@ public class MenuView extends JComponent {
 
 
         g.setColor(bground);
-        g2d.fillRect(x, y, 160, 40);
+        //g2d.fillRect(x, y, 160, 40);
+        g2d.fillRect(x, y, 240, 40);
         Font f = new Font("consolas", Font.BOLD, 12);
         g.setFont(f);
         g.setColor(fground);
-        g2d.drawRect(x, y, 160, 40);
+        //g2d.drawRect(x, y, 160, 40);
+        g2d.drawRect(x, y, 240, 40);
         g.drawString(option, x+20, y+20);
     }
 

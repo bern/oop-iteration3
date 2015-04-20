@@ -31,4 +31,14 @@ public class MainMenu extends GameMenu {
                 break;
         }
     }
+    
+    public void back() {
+        System.exit(0);
+    }
+
+    @Override
+    public void updateOptions() {
+        options = new String[]{ "New Game", "Load Game", "Controls"};
+        super.setOptions(options);
+    }
 }

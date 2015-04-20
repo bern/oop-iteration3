@@ -35,4 +35,14 @@ public class AvatarCreationMenu extends GameMenu {
                 break;
         }
     }
+    
+    public void back() {
+        getGame().mainMenu();
+    }
+
+    @Override
+    public void updateOptions() {
+        options = new String[]{ "Smasher", "Summoner", "Sneak", "Back"};
+        super.setOptions(options);
+    }
 }

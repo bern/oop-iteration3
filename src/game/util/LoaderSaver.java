@@ -21,6 +21,7 @@ public class LoaderSaver {
     public LoaderSaver(){
 
     }
+    /*
     public ComponentInputMap loadDefaultMenuInputMap(JComponent view ){
         ComponentInputMap inputMap = new ComponentInputMap( view );
         inputMap.put(KeyStroke.getKeyStroke("W"), "N");
@@ -28,6 +29,7 @@ public class LoaderSaver {
         inputMap.put(KeyStroke.getKeyStroke("S"), "select");
         return inputMap;
     }
+    */
 
     // brand new game load all the default stuff!
     public GameWorld loadNewGameWorld( Game game ) {
