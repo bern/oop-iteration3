@@ -18,7 +18,7 @@ public class HealEffect extends StatusEffect {
     }
     @Override
     public void applyTo(Entity victim) {
-        victim.healDamage(amt);
+        //victim.healDamage(amt);
     }
     
 }

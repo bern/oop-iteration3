@@ -23,6 +23,6 @@ public class StrengthAbility extends BoonAbility {
         StrengthEffect ef = createStatusEffect();
         ef.setOwner(caller);
         ef.applyTo(caller);
-        Game.getInstance().getActiveWorld().addEffect(ef);
+        //Game.getInstance().getActiveWorld().addEffect(ef);
     }
 }

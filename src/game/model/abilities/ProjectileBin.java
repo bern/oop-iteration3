@@ -51,13 +51,15 @@ public class ProjectileBin {
                         removeProjectile(working);
                         continue;
                     }
-                        
+                    
+                    /*
                     Entity ent_collide = Game.getInstance().getActiveWorld().getEntityAt(moveTo);
                     if(ent_collide != null) {
                         removeProjectile(working);
                         working.onHit(ent_collide);
                         continue;
                     }
+                    */
                     
                     working.setLocation(moveTo);
                 }

@@ -20,12 +20,12 @@ public class SlowEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-       getVictim().setSpeed(1.0);
+       //getVictim().setSpeed(1.0);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        victim.setSpeed(amt);
+        //victim.setSpeed(amt);
         setVictim(victim);
     }
     

@@ -20,12 +20,12 @@ public class QuickenEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-        getVictim().setSpeed(1.0);
+        //getVictim().setSpeed(1.0);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        victim.setSpeed(strength);
+        //victim.setSpeed(strength);
         setVictim(victim);
     }
     

@@ -17,12 +17,12 @@ public class InvisibleEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-       getVictim().setInvisible(false);
+       //getVictim().setInvisible(false);
     }
 
     @Override
     public void applyTo(Entity victim) {
-       victim.setInvisible(true);
+       //victim.setInvisible(true);
        setVictim(victim);
     }
     

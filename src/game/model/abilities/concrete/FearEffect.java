@@ -18,12 +18,12 @@ public class FearEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-        getVictim().setAfraid(false);
+        //getVictim().setAfraid(false);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        victim.setAfraid(true);
+        //victim.setAfraid(true);
         setVictim(victim);
     }
     
