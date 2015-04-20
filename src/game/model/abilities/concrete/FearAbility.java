@@ -24,8 +24,6 @@ public class FearAbility extends RadialAbility {
 
     @Override
     public void activate(Entity caller) {
-        FearEffect ef = createStatusEffect();
-        ef.setOwner(caller);
-        affectTiles(caller, ef);
+        affectTiles(caller);
     } 
 }

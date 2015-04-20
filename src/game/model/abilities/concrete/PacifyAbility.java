@@ -24,9 +24,7 @@ public class PacifyAbility extends LinearAbility{
 
     @Override
     public void activate(Entity caller) {
-        PacifyEffect ef = createStatusEffect();
-        ef.setOwner(caller);
-        affectTiles(caller, ef);
+        affectTiles(caller);
     }
     
 }
