@@ -2,6 +2,7 @@ package game.model.item;
 
 import game.controller.TriggerTrapAction;
 import game.model.abilities.StatusEffect;
+import game.model.abilities.concrete.EmptyEffect;
 import game.model.entity.Avatar;
 import game.util.Location;
 
@@ -24,8 +25,7 @@ public class Trap extends Item {
 
     public void performAction(Avatar avatar) {
         if (isDetected(avatar)) {
-            //TODO activate effect.
-            //effect.activate();
+            effect.applyTo(avatar);
         }
     }
 
@@ -35,7 +35,6 @@ public class Trap extends Item {
 
     /** Destroy associated effect. Then Remove from the map. */
     public void disarmTrip() {
-        //TODO: remove area effect.
-        //TODO: remove self.
+        this.effect = new EmptyEffect();
     }
 }

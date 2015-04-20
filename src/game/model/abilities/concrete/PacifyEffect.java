@@ -18,17 +18,17 @@ public class PacifyEffect extends TimedEffect {
     
     @Override
     public void reapply() {
-        //getVictim().setPacified(true);
+        getVictim().setPacified(true);
     }
 
     @Override
     public void reverseEffect() {
-        //getVictim().setPacified(false);
+        getVictim().setPacified(false);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        //victim.setPacified(true);
+        victim.setPacified(true);
         setVictim(victim);
         Game.getInstance().getActiveWorld().addEffect(this);
     }

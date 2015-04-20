@@ -14,7 +14,7 @@ public class CreepingEffect extends StatusEffect {
 
     @Override
     public void applyTo(Entity victim) {
-        //victim.toggleSneaking();
+        victim.toggleSneaking();
     }
     
 }

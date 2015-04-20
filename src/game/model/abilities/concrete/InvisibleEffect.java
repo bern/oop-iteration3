@@ -18,17 +18,17 @@ public class InvisibleEffect extends TimedEffect {
     
     @Override
     public void reapply() {
-        //getVictim().setInvisible(true);
+        getVictim().setInvisible(true);
     }
 
     @Override
     public void reverseEffect() {
-       //getVictim().setInvisible(false);
+       getVictim().setInvisible(false);
     }
 
     @Override
     public void applyTo(Entity victim) {
-       //victim.setInvisible(true);
+       victim.setInvisible(true);
        setVictim(victim);
        Game.getInstance().getActiveWorld().addEffect(this);
     }
