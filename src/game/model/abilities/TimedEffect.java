@@ -38,6 +38,7 @@ public abstract class TimedEffect extends StatusEffect {
     }
     
     public abstract void reverseEffect();
+    public abstract void reapply();
     
     public Entity getVictim() { return appliedTo; }
     public void setVictim(Entity appliedTo) { this.appliedTo = appliedTo; }

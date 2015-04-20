@@ -39,6 +39,10 @@ public class GameWorld extends MainModel {
         }
 
     }
+    
+    public Entity getEntityAt(Location l) {
+        return entities[l.getX()][l.getY()];
+    }
 
     @Override
     public ActionMap updateValidActions() {

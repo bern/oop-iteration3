@@ -14,6 +14,11 @@ public class PacifyEffect extends TimedEffect {
     public PacifyEffect(long time) {
         super(time);
     }
+    
+    @Override
+    public void reapply() {
+        //getVictim().setPacified(true);
+    }
 
     @Override
     public void reverseEffect() {
