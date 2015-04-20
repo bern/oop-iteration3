@@ -3,9 +3,10 @@ package game.model.entity;
 import game.controller.DenyMoveAction;
 import game.model.behavior.EntityInteractable;
 import game.model.entity.occupation.CharacterOccupation;
-import game.model.entity.occupation.Occupation;
+import game.model.game_world.terrain.Terrain;
 import game.model.item.TakeableItem;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -35,8 +36,26 @@ public class Avatar extends Entity {
         return new DenyMoveAction();
     }
 
+
+
     @Override
     protected CharacterOccupation getOccupation() {
         return (CharacterOccupation)super.getOccupation();
     }
+
+    @Override
+    public void prepareForDraw(GameWorldView g) {
+        g.drawGameObject( this );
+    }
+
+    @Override
+    public AbstractAction beInteractedWithBy(EntityInteractable ei){
+        return ei.beInteractedWithBy( this );
+    }
+    @Override
+    public AbstractAction interactWith(Terrain t){
+        return t.beInteractedWithBy( this );
+    }
+
+
 }

@@ -2,12 +2,9 @@ package game.model.game_world.terrain;
 
 
 
-import java.awt.Graphics2D;
-
-
+import game.controller.MoveToAction;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
-
 import game.util.Location;
 import game.view.GameWorldView;
 
@@ -22,12 +19,13 @@ public class Grass extends Terrain {
 
     @Override
     public AbstractAction beInteractedWithBy(Entity i) {
-        return null;
+        System.out.println(getLocation().getX()+" " +getLocation().getY());
+        return new MoveToAction(i , getLocation());
     }
 
     @Override
     public AbstractAction beInteractedWithBy(Avatar a) {
-        return null;
+        return new MoveToAction(a , getLocation());
     }
 
     @Override

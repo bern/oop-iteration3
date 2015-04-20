@@ -68,5 +68,16 @@ public class Location {
     }
 
 
+    public Location[] all() {
+        return new Location[]{
+                northwest(),
+                north(),
+                northeast(),
+                southwest(),
+                south(),
+                southeast()
+        };
+
+    }
 }
 

@@ -1,24 +1,17 @@
 package game.view;
 
 
+import game.model.entity.*;
 import game.model.game_world.GameWorld;
-import game.model.game_world.terrain.Dirt;
-import game.model.game_world.terrain.Grass;
-import game.model.game_world.terrain.Mountain;
-import game.model.game_world.terrain.River;
-import game.model.game_world.terrain.Terrain;
-import game.model.game_world.terrain.Water;
+import game.model.game_world.terrain.*;
 import game.util.Location;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import java.util.*;
-
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 
 
@@ -94,11 +87,16 @@ public class GameWorldView  extends JComponent {
     
     public void drawMap(Graphics2D g2d) {
     	//get Entity Location
-    	Location EL = new Location(32,11);
+		Entity entity = map.getCurrentEntity();
+    	Location EL = entity.getLocation();
     	int eR = EL.getX();
     	int eC = EL.getY();
     	
-    	map.prepareForDrawAt(EL,this);
+    	map.prepareForDrawAt(EL, this);
+		setPixelX(getCenterX());
+		setPixelY(getCenterY());
+		entity.prepareForDraw(this);
+
     	
     	printTileNeighbors(EL);
     }
@@ -123,6 +121,20 @@ public class GameWorldView  extends JComponent {
     public void drawGameObject( River r, Location l){
     	g2d.drawImage(ImageResources.dirt.getImage(), pixelX, pixelY, null);
     }
+
+	public void drawGameObject( Avatar a ){
+		g2d.drawImage(ImageResources.avatar.getImage(), pixelX, pixelY, null);
+	}
+	public void drawGameObject(Npc npc) {
+	}
+
+	public void drawGameObject(Mount mount) {
+	}
+
+	public void drawGameObject(Pet pet) {
+	}
+
+
     
     
     /*
@@ -165,7 +177,7 @@ public class GameWorldView  extends JComponent {
     	
     	int i = 0;
     	
-    	while (!bfs.isEmpty() && i < 91) {
+    	while (!bfs.isEmpty() && i < 127) {
     		++i;
     		currentLocation = bfs.remove();
     		
@@ -293,4 +305,16 @@ public class GameWorldView  extends JComponent {
     		return false;
     	}
     }
+
+	public static int getMagicNumberFromRadius (int n) {
+		int sum = 0;
+		for(int i = 0; i <= n; i++) {
+			sum += i;
+		}
+		sum = sum*6;
+		sum++;
+		return sum;
+	}
+
+
 }

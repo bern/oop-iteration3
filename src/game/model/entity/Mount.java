@@ -1,8 +1,11 @@
 package game.model.entity;
 
 
+import game.controller.MountAction;
 import game.model.behavior.EntityInteractable;
+import game.model.game_world.terrain.Terrain;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -26,10 +29,6 @@ public class Mount extends Entity {
         this.mountedAvatar = mountedAvatar;
     }
 
-    public AbstractAction interactWith(EntityInteractable e) {
-        return e.beInteractedWithBy( this );
-    }
-
     @Override
     public AbstractAction beInteractedWithBy(Entity i) {
         return null;
@@ -37,6 +36,22 @@ public class Mount extends Entity {
 
     @Override
     public AbstractAction beInteractedWithBy(Avatar a) {
-        return null;
+        return new MountAction(a, this);
+    }
+
+    @Override
+    public AbstractAction beInteractedWithBy(EntityInteractable ei){
+        return ei.beInteractedWithBy( this );
+    }
+    @Override
+    public AbstractAction interactWith(Terrain t){
+        return t.beInteractedWithBy( this );
+    }
+
+
+
+    @Override
+    public void prepareForDraw(GameWorldView g) {
+        g.drawGameObject( this );
     }
 }

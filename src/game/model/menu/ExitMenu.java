@@ -2,15 +2,19 @@ package game.model.menu;
 
 import game.Game;
 
-public class PauseMenu extends GameMenu {
+
+
+
+public class ExitMenu extends GameMenu {
 
     String[] options;
     String[] occupations;
 
-    public PauseMenu(Game g){
+    public ExitMenu(Game g){
         super(g);
-        setTitle("Y U NO CONTINUE?");
-        options = new String[]{ "Continue", "Save Game", "Controls", "Exit to Main Menu"};
+        setTitle("ARE YOU SURE?");
+        setSubtitle(" plz dont do dis");
+        options = new String[]{ "Yes", "No"};
         super.setOptions(options);
 
     }
@@ -24,12 +28,6 @@ public class PauseMenu extends GameMenu {
                 break;
             case 1:
                 getGame().saveGame();
-                break;
-            case 2:
-                getGame().controls();
-                break;
-            case 3:
-                getGame().mainMenu();
                 break;
         }
     }
