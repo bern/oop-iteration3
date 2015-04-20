@@ -119,7 +119,7 @@ public class GameWorldView  extends JComponent {
     }
     
     public void drawGameObject( River r, Location l){
-    	g2d.drawImage(ImageResources.dirt.getImage(), pixelX, pixelY, null);
+    	g2d.drawImage(ImageResources.river.getImage(), pixelX, pixelY, null);
     }
 
 	public void drawGameObject( Avatar a ){

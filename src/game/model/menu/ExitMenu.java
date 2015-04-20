@@ -31,4 +31,16 @@ public class ExitMenu extends GameMenu {
                 break;
         }
     }
+
+	@Override
+	public void updateOptions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void back() {
+		// TODO Auto-generated method stub
+		
+	}
 }
