@@ -6,15 +6,11 @@ package game.model.abilities;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Aidan
- */
 public class EffectBin {
     private List<TimedEffect> effects;
     
     public EffectBin() {
-        effects = new ArrayList();
+        effects = new ArrayList<TimedEffect>();
     }
     
     public void addEffect(TimedEffect e) { effects.add(e); }
@@ -35,7 +31,7 @@ public class EffectBin {
         for(int i = effects.size() - 1; i >= 0; i--) {
             TimedEffect effect = effects.get(i);
             effect.reverseEffect();
-            effect.applyTo(effect.getVictim());
+            effect.reapply();
         }
     }
     

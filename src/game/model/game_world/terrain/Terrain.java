@@ -1,11 +1,11 @@
 package game.model.game_world.terrain;
 
 
-import game.model.behavior.Interactable;
+import game.model.behavior.EntityInteractable;
 import game.util.Location;
 import game.view.GameWorldView;
 
-public abstract class Terrain implements Interactable {
+public abstract class Terrain implements EntityInteractable {
     Location location;
 
     public Terrain(Location l){

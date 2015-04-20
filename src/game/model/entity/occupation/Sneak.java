@@ -7,5 +7,9 @@ public class Sneak extends CharacterOccupation {
 		
 		statContainer.setAgility(20);
 	}
-	
+
+	@Override
+	public int getDectionRating() {
+		return super.getDectionRating();	//TODO: work in the sneak detection ability into this.
+	}
 }

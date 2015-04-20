@@ -9,6 +9,9 @@ public class StatContainer {
 	private PrimaryStat hardiness;
 	private PrimaryStat experience;
 	private PrimaryStat movement;
+        
+        private int currentHealth;
+        private int currentMana;
 	
 	private DerivedStat level;
 	private DerivedStat life;
@@ -25,6 +28,9 @@ public class StatContainer {
 		hardiness = new PrimaryStat();
 		experience = new PrimaryStat();
 		movement = new PrimaryStat();
+                
+                currentHealth = 0;
+                currentMana = 0;
 		
 		level = new Level();
 		life = new Life();
@@ -35,6 +41,30 @@ public class StatContainer {
 		
 		updateAllDerived();
 	}
+        
+        public int getCurrentHealth() {
+                return currentHealth;
+        }
+        
+        public int getCurrentMana() {
+                return currentMana;
+        }
+        
+        public void modCurrentHealth(int mod) {
+            int newHealth = currentHealth + mod;
+            
+            if(newHealth < 0) newHealth = 0;
+            if(newHealth > getLife()) newHealth = getLife();
+            currentHealth = newHealth;
+        }
+        
+        public void modCurrentMana(int mod) {
+            int newMana = currentMana + mod;
+            
+            if(newMana< 0) newMana = 0;
+            if(newMana > getLife()) newMana = getMana();
+            currentMana = newMana;
+        }
 	
 	public int getLivesLeft () {
 		return livesLeft.getValue();
@@ -105,16 +135,20 @@ public class StatContainer {
 	public void setIntellect (int value) {
 		intellect.setValue(value);
 		mana.update(this);
+                currentMana = Math.min(currentMana, getMana());
 	}
 	
 	public void setHardiness (int value) {
 		hardiness.setValue(value);
 		life.update(this);
+                currentHealth = Math.min(currentHealth, getLife());
 	}
 	
 	public void setExperience (int value) {
 		experience.setValue(value);
 		level.update(this);
+                currentMana = Math.min(currentMana, getMana());
+                currentHealth = Math.min(currentHealth, getLife());
 	}
 	
 	public void setMovement (int value) {
@@ -128,5 +162,7 @@ public class StatContainer {
 		offensiveRating.update(this);
 		defensiveRating.update(this);
 		armorRating.update(this);
+                currentMana = Math.min(currentMana, getMana());
+                currentHealth = Math.min(currentHealth, getLife());
 	}
 }

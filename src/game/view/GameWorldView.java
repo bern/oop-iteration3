@@ -144,7 +144,6 @@ public class GameWorldView  extends JComponent {
     }
 
     public void drawGameObject( Mountain m, Location l){
-    	System.out.println("kk");
     	int row = l.getX();
     	int col = l.getY();
     	int changeInX = X_OFFSET * col;

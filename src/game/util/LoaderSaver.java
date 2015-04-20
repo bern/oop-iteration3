@@ -3,6 +3,7 @@ package game.util;
 import game.Game;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
+import game.model.entity.occupation.Smasher;
 import game.model.game_world.GameWorld;
 import game.model.game_world.terrain.*;
 
@@ -60,7 +61,7 @@ public class LoaderSaver {
     private GameWorld loadDefaultGameWorld( Game game ) {
 
         Terrain[][] terrains = loadTerrains();
-        Entity e = new Avatar(new Location(5, 5));
+        Entity e = new Avatar(new Location(5, 5), new Smasher());
 
         return new GameWorld( game, terrains, e);
     }

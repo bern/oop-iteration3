@@ -8,12 +8,12 @@ package game.model.game_world;
  * @author Aidan
  */
 public enum Direction {
-    UP(0,-1),
-    UPLEFT(-1,-1),
-    UPRIGHT(1,-1),
-    DOWNLEFT(-1,1),
-    DOWNRIGHT(1,1),
-    DOWN(0,1);
+    UP(-1,-1),
+    UPLEFT(-1,0),
+    UPRIGHT(0,-1),
+    DOWNLEFT(0,1),
+    DOWNRIGHT(1,0),
+    DOWN(1,1);
     private int x;
     private int y;
     private Direction(int x, int y) {
