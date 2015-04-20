@@ -6,7 +6,8 @@ import game.model.entity.stat.StatContainer;
 public class CharacterOccupation extends Occupation {
 	
 	public CharacterOccupation () {
-		statContainer = new StatContainer();
+		super();
+		statContainer = new StatContainer(getArmory());
 		
 		statContainer.setLivesLeft(3);
 		statContainer.setStrength(10);

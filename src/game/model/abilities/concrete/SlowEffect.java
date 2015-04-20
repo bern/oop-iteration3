@@ -12,26 +12,26 @@ import game.model.entity.Entity;
  * @author Aidan
  */
 public class SlowEffect extends TimedEffect {
-    private float amt;
+    private int amt;
     
-    public SlowEffect(float amt, long time) {
+    public SlowEffect(int amt, long time) {
         super(time);
         this.amt = amt;
     }
 
     @Override
     public void reverseEffect() {
-       //getVictim().setSpeed(1.0);
+       getVictim().modSpeed(amt * -1);
     }
     
     @Override
     public void reapply() {
-        //getVictim().setSpeed(amt);
+        getVictim().modSpeed(amt);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        //victim.setSpeed(amt);
+        victim.modSpeed(amt);
         setVictim(victim);
         Game.getInstance().getActiveWorld().addEffect(this);
     }

@@ -21,17 +21,17 @@ public class StrengthEffect extends TimedEffect {
 
     @Override
     public void reverseEffect() {
-        //getVictim().modStrength(str * -1);
+        getVictim().modStrength(str * -1);
     }
     
     @Override
     public void reapply() {
-        //getVictim().modStrength(str);
+        getVictim().modStrength(str);
     }
 
     @Override
     public void applyTo(Entity victim) {
-        //victim.modStrength(str);
+        victim.modStrength(str);
         setVictim(victim);
         Game.getInstance().getActiveWorld().addEffect(this);
     }

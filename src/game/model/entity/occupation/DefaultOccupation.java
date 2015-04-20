@@ -11,7 +11,8 @@ import game.model.entity.stat.StatContainer;
  */
 public class DefaultOccupation extends Occupation {
     public DefaultOccupation () {
-		statContainer = new StatContainer();
+		super();
+		statContainer = new StatContainer(getArmory());
 		
 		statContainer.setLivesLeft(3);
 		statContainer.setStrength(10);
