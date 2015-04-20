@@ -3,6 +3,7 @@ package game.model.game_world.terrain;
 
 import game.model.behavior.Interactable;
 import game.util.Location;
+import game.view.GameWorldView;
 
 public abstract class Terrain implements Interactable {
     Location location;
@@ -17,6 +18,9 @@ public abstract class Terrain implements Interactable {
 
     public Location getLocation() {
         return location;
+    }
+    
+    public void prepareForDraw(Location l, GameWorldView gmw) {
     }
 
 

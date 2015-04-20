@@ -2,6 +2,7 @@ package game.model.game_world.terrain;
 
 import game.model.behavior.Interactor;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -19,5 +20,10 @@ public class Dirt extends Terrain {
     @Override
     public String toString(){
         return "Dirt";
+    }
+    
+    @Override
+    public void prepareForDraw(Location l, GameWorldView gmw) {
+    	gmw.drawGameObject(this, l);
     }
 }

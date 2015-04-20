@@ -6,6 +6,7 @@ import game.model.behavior.Interactable;
 import game.model.entity.Entity;
 import game.model.game_world.terrain.Terrain;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
 
@@ -91,10 +92,15 @@ public class GameWorld extends MainModel {
         this.currentEntity = currentEntity;
     }
     
-    public String getTerrainAtLocation(Location l) {
-    	
-    	return terrains[l.getY()][l.getX()].toString();
-    	
+//    public String getTerrainAtLocation(Location l) {
+//    	
+//    	return terrains[l.getY()][l.getX()].toString();
+//    	
+//    }
+    
+    public void prepareForDrawAt(Location l, GameWorldView gmw) {
+    	Terrain t = terrains[l.getY()][l.getX()];
+    	t.prepareForDraw(l, gmw);
     }
     
 //    public Terrain getTerrainAtLocation(Location l) {
