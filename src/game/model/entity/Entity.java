@@ -7,8 +7,10 @@ import game.model.game_world.Direction;
 import game.model.game_world.GameWorld;
 import game.model.game_world.terrain.Terrain;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 
 public abstract class Entity implements EntityInteractable {
@@ -75,6 +77,8 @@ public abstract class Entity implements EntityInteractable {
     public void setFacing(Direction facing) {
         this.facing = facing;
     }
+
+    public abstract BufferedImage drawOn(GameWorldView v);
 
 
 

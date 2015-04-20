@@ -3,8 +3,10 @@ package game.model.game_world.terrain;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 
 public class Mountain extends Terrain {
@@ -23,9 +25,8 @@ public class Mountain extends Terrain {
     public AbstractAction beInteractedWithBy(Avatar a) {
         return null;
     }
-
     @Override
-    public String toString(){
-        return "Mountain";
+    public BufferedImage drawOn(GameWorldView v){
+        return v.imageOf(this);
     }
 }

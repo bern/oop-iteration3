@@ -3,8 +3,10 @@ package game.model.entity;
 
 import game.model.behavior.EntityInteractable;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 public class Mount extends Entity {
 
@@ -38,5 +40,9 @@ public class Mount extends Entity {
     @Override
     public AbstractAction beInteractedWithBy(Avatar a) {
         return null;
+    }
+
+    public BufferedImage drawOn( GameWorldView gv){
+        return gv.imageOf(this);
     }
 }

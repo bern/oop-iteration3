@@ -23,11 +23,11 @@ public class GameWorldParser {
 	
 	public void initTileImages() {
 		try {
-			water = ImageIO.read(new File("res/Water.png"));
-			mountain = ImageIO.read(new File("res/Mountain.png"));
-			grass = ImageIO.read(new File("res/Grass.png"));
-			dirt = ImageIO.read(new File("res/Dirt.png"));
-			arrow = ImageIO.read(new File("res/HorizontalHex.png"));
+			water = ImageIO.read(new File("res/water.png"));
+			mountain = ImageIO.read(new File("res/mountain.png"));
+			grass = ImageIO.read(new File("res/grass.png"));
+			dirt = ImageIO.read(new File("res/dirt.png"));
+			arrow = ImageIO.read(new File("res/river.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

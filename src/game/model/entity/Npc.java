@@ -1,10 +1,11 @@
 package game.model.entity;
 
 import game.controller.DenyMoveAction;
-import game.model.behavior.EntityInteractable;
 import game.util.Location;
+import game.view.GameWorldView;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 public class Npc extends Entity {
 
@@ -21,5 +22,9 @@ public class Npc extends Entity {
     @Override
     public AbstractAction beInteractedWithBy(Avatar a) {
         return new DenyMoveAction();    //Change to TalkingAndDenyMoveAction?!?
+    }
+
+    public BufferedImage drawOn( GameWorldView gv){
+        return gv.imageOf(this);
     }
 }

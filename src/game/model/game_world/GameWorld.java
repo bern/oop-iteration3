@@ -37,7 +37,7 @@ public class GameWorld extends MainModel {
     @Override
     public ActionMap updateValidActions() {
         // entity look at the map around you! can you even move brah?! what can you with things around you?
-        return currentEntity.updateValidActions( this );
+        return currentEntity.updateValidActions(this);
     }
 
     public AbstractAction terrainBeInteractedWithBy(Entity entity, Location location) {
@@ -95,12 +95,16 @@ public class GameWorld extends MainModel {
         this.currentEntity = currentEntity;
     }
     
-    public String getTerrainAtLocation(Location l) {
+    public Terrain getTerrainAtLocation(Location l) {
     	
-    	return terrains[l.getY()][l.getX()].toString();
+    	return terrains[l.getY()][l.getX()];
     	
     }
-    
+
+    public Location getCurrentEntityLocation() {
+        return currentEntity.getLocation();
+    }
+
 //    public Terrain getTerrainAtLocation(Location l) {
 //    	
 //    	return terrains[l.getY()][l.getX()];

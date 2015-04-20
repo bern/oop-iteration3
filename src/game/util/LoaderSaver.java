@@ -49,18 +49,11 @@ public class LoaderSaver {
     }
 
 
-
-
-
-
-
-
-
     // LOAD THINGS THAT NEVER CHANGE... like terrains, area effects,
     private GameWorld loadDefaultGameWorld( Game game ) {
 
         Terrain[][] terrains = loadTerrains();
-        Entity e = new Avatar(new Location(5, 5));
+        Entity e = new Avatar(new Location(20, 21));
 
         return new GameWorld( game, terrains, e);
     }

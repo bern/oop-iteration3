@@ -25,13 +25,11 @@ public class MenuView extends JComponent {
         drawTitles(g, x, y);
 
         for ( String option : gameMenu.getOptions() ){
-
             if(option.equals(gameMenu.getSelectedOption())){
                 drawOption(g, x, y, option, true );
             } else {
                 drawOption(g, x, y, option, false );
             }
-
             y += 50;
         }
     }
@@ -41,6 +39,7 @@ public class MenuView extends JComponent {
         Font f = new Font("consolas", Font.BOLD, 20);
         g.setFont(f);
         g.drawString(gameMenu.getTitle(), x, y-70);
+
         f = new Font("consolas", Font.BOLD, 12);
         g.setFont(f);
         g.drawString(gameMenu.getSubtitle(), x, y-30);
@@ -52,7 +51,6 @@ public class MenuView extends JComponent {
 
         Color bground = (selected)? Color.BLACK : Color.WHITE;
         Color fground = (selected)? Color.WHITE : Color.BLACK;
-
 
         g.setColor(bground);
         g2d.fillRect(x, y, 160, 40);

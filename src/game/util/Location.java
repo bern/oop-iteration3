@@ -11,6 +11,11 @@ public class Location {
         this.y = y;
     }
 
+    public Location(Location l) {
+        this.x = l.getX();
+        this.y = l.getY();
+    }
+
     public Location north(){
         return new Location(getX()-1,getY()-1);
     }
@@ -32,6 +37,8 @@ public class Location {
     public Location dir(Direction d) {
         return new Location(getX() + d.getX(), getY() + d.getY());
     }
+
+
     public int getX() {
         return x;
     }

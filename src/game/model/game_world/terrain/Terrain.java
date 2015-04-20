@@ -3,6 +3,9 @@ package game.model.game_world.terrain;
 
 import game.model.behavior.EntityInteractable;
 import game.util.Location;
+import game.view.GameWorldView;
+
+import java.awt.image.BufferedImage;
 
 public abstract class Terrain implements EntityInteractable {
     Location location;
@@ -18,6 +21,8 @@ public abstract class Terrain implements EntityInteractable {
     public Location getLocation() {
         return location;
     }
+
+    public abstract BufferedImage drawOn(GameWorldView v);
 
 
 }

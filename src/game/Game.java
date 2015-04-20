@@ -40,7 +40,7 @@ public class Game {
             update();
             render();
             try {
-                Thread.sleep(60);
+                Thread.sleep(100);
             } catch ( InterruptedException e){
                 running = false;
 

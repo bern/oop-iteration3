@@ -1,48 +1,37 @@
 package game.view;
 
 
+import game.model.entity.Avatar;
+import game.model.entity.Entity;
 import game.model.game_world.GameWorld;
-import game.model.game_world.terrain.Grass;
-import game.model.game_world.terrain.Terrain;
+import game.model.game_world.terrain.*;
+import game.util.ImageResources;
 import game.util.Location;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 
 
 public class GameWorldView  extends JComponent {
     private GameWorld map;
-    private boolean isMapLoaded;
-    private BufferedImage[][] mapImages;
-    private static int MAX_ROWS = 60;
-    private static int MAP_COLMS = 60;
-    private static int X_OFFSET = 25;
-    private static int Y_OFFSET = 15;
+    private ImageResources imageResources;
+    private int brushX;
+    private int brushY;
     
 
     public GameWorldView (GameWorld m){
     	map = m;
-    	loadMap();
+        imageResources = new ImageResources();
+
     }
 
     @Override
     public void paint( Graphics g){
-    	
-
         super.paint(g);
-
         drawBackground(g);
         drawMap(g);
-        int w = getWidth()/2;
-        int h = getHeight()/2;
-
-
 
     }
 
@@ -51,79 +40,108 @@ public class GameWorldView  extends JComponent {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g.setColor(Color.WHITE);
+        g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, getWidth(), getHeight());
     }
 
-    public void loadMap() {
-    	GameWorldParser rl = new GameWorldParser();
-    	mapImages = rl.readGameWorld();
-    }
-    
     public void drawMap(Graphics g) {
         
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
+        brushX = getWidth()/2;
+        brushY = getHeight()/2-32;
 
-       
-        int centerX = getWidth()/2;
-        int centerY = 0;
-        
-        int changeInX = X_OFFSET;
-        int changeInY = Y_OFFSET;
-        
-        int i = 0, j = 0;
-        
-        for (int row = 0; row < MAX_ROWS; row++) {
+        Entity e = map.getCurrentEntity();
+        int radius = 2;
 
-        	i = 0;
-            for (int col = 0; col < MAP_COLMS; col++){
-            	changeInX = X_OFFSET * col;
-            	changeInY = Y_OFFSET * col;
-            	
-            	Location l = new Location(row,col);
-            	String s = map.getTerrainAtLocation(l);
-            	
-            	
-            	//drawGameObject(g2d, t,centerX + changeInX, centerY + changeInY);
-            	
-            	if (s == "Mountain") {
-            		g2d.drawImage(ImageResources.mountain.getImage(), centerX + changeInX, centerY + changeInY, null);
-            	} else if (s == "Grass" ) {
-            		g2d.drawImage(ImageResources.grass.getImage(), centerX + changeInX, centerY + changeInY, null);
-            	} else if (s == "Dirt" ) {
-            		g2d.drawImage(ImageResources.dirt.getImage(), centerX + changeInX, centerY + changeInY, null);
-            	} else if (s == "River" ) {
-            		g2d.drawImage(ImageResources.water.getImage(), centerX + changeInX, centerY + changeInY, null);
-            	} else if (s == "Water" ) {
-            		g2d.drawImage(ImageResources.water.getImage(), centerX + changeInX, centerY + changeInY, null);
-            	}
-                
-                ++i;
-            }
-            centerX = centerX - X_OFFSET;
-            centerY = centerY + Y_OFFSET;
-
+        for(int r = 0; r<= radius; r++) {
+            drawTerrain(g2d, e.getLocation(), r);
         }
-        
-       
-
-
+        brushX = getWidth()/2;
+        brushY = getHeight()/2-32;
+        g2d.drawImage(imageOf( e ), brushX, brushY, null);
 
 
 
     }
-    
-   
-//    private void drawGameObject( Graphics2D g2d, Grass g, int x, int y){
-//    	terrain.prepareForDraw(this);
-//    	
-//    	///terrain
-//    	gameWorldView.draw(this);
-//    	
-//    	
-//    	g2d.drawImage(ImageResources.grass.getImage(), x, y, null);
-//    }
 
+    private void drawTerrain( Graphics g, Location l, int radius){
+        Graphics2D g2d = (Graphics2D) g;
+        Location root = new Location(l);
+
+
+        Terrain t = map.getTerrainAtLocation(root);
+        g2d.drawImage(imageOf(t), brushX, brushY, null);
+        root = moveBrushAndLocationTo(4, root);
+
+        for(int i = 0; i<6 ; i++){
+            for(int j = 0; j<radius; j++){
+                t = map.getTerrainAtLocation( root );
+                g2d.drawImage(imageOf(t), brushX, brushY, null);
+                root = moveBrushAndLocationTo(i, root);
+            }
+        }
+
+
+    }
+
+    private Location moveBrushAndLocationTo( int i, Location l ){
+
+        switch ( i ){
+            case 0:
+                brushY -= 16;
+                brushX -= 25;
+                return l.northwest();
+            case 1:
+                brushY -= 32;
+                return l.north();
+            case 2:
+                brushY -= 16;
+                brushX += 25;
+                return l.northeast();
+            case 3:
+                brushY += 16;
+                brushX += 25;
+                return l.southeast();
+            case 4:
+                brushY += 32;
+                return l.south();
+            case 5:
+                brushY += 16;
+                brushX -= 25;
+                return l.southwest();
+            default:
+                return l.north();
+
+        }
+    }
+
+
+
+
+    public BufferedImage imageOf(Water w){
+        return imageResources.getImage( w );
+    }
+    public BufferedImage imageOf(Mountain m){
+        return imageResources.getImage( m );
+    }
+    public BufferedImage imageOf(River r){
+        return imageResources.getImage( r );
+    }
+    public BufferedImage imageOf(Dirt d){
+        return imageResources.getImage( d );
+    }
+    public BufferedImage imageOf(Grass g) {
+        return imageResources.getImage( g );
+    }
+    public BufferedImage imageOf(Terrain t) {
+        return t.drawOn(this);
+    }
+    public BufferedImage imageOf(Entity t) {
+        return t.drawOn(this);
+    }
+    public BufferedImage imageOf(Avatar a) {
+        return imageResources.getImage(a);
+    }
 }
