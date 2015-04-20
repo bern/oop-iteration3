@@ -21,20 +21,15 @@ public class Location {
     public Location southeast() {
         return new Location(getX(), getY()+1);
     }
-
     public Location northwest() {
         return new Location(getX()+1, getY());
     }
     public Location northeast() {
         return new Location(getX(), getY()+1);
     }
-
-
-
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }

@@ -1,7 +1,10 @@
 package game.model.entity;
 
 
+import game.model.behavior.Interactor;
 import game.util.Location;
+
+import javax.swing.*;
 
 public class Mount extends Entity {
 
@@ -21,5 +24,10 @@ public class Mount extends Entity {
 
     public void setMountedAvatar(Avatar mountedAvatar) {
         this.mountedAvatar = mountedAvatar;
+    }
+
+    @Override
+    public AbstractAction beInteractedWithBy(Interactor i) {
+        return null;
     }
 }

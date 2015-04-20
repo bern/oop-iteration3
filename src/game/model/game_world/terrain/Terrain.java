@@ -1,4 +1,4 @@
-package game.model.game_world;
+package game.model.game_world.terrain;
 
 
 import game.model.behavior.Interactable;

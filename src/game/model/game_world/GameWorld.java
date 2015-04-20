@@ -4,6 +4,7 @@ import game.Game;
 import game.model.MainModel;
 import game.model.behavior.Interactable;
 import game.model.entity.Entity;
+import game.model.game_world.terrain.Terrain;
 import game.util.Location;
 
 import javax.swing.*;

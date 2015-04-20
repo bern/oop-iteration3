@@ -4,8 +4,8 @@ import game.Game;
 import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.model.game_world.GameWorld;
-import game.model.game_world.Grass;
-import game.model.game_world.Terrain;
+import game.model.game_world.terrain.Grass;
+import game.model.game_world.terrain.Terrain;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -66,17 +66,37 @@ public class LoaderSaver {
         return new GameWorld( game, terrains, e);
     }
 
-    private Terrain[][] loadTerrains(){
+    public Terrain[][] loadTerrains(){
 
         char[][] terrainChars = readTerrains();
 
+        System.out.println(terrainChars[0].length + terrainChars.length);
 
-        Terrain[][] terrains = new Terrain[10][10];
+        Terrain[][] terrains = new Terrain[terrainChars[0].length][terrainChars.length];
 
-        for(int y = 0; y< terrains.length; y++){
-            for(int x = 0; x< terrains.length; x++){
-                terrains[y][x] = new Grass( new Location(x,y));
+        for(int y = 0; y< terrainChars.length; y++){
+            for(int x = 0; x< terrainChars.length; x++){
+                switch (terrainChars[y][x]) {
+                    case'G':
+                        terrains[y][x] = new Grass(new Location(x, y));
+                        break;
+                    case'M':
+                        terrains[y][x] = new Grass(new Location(x, y));
+                        break;
+                    case'D':
+                        terrains[y][x] = new Grass(new Location(x, y));
+                        break;
+                    case'R':
+                        terrains[y][x] = new Grass(new Location(x, y));
+                        break;
+                    case'W':
+                        terrains[y][x] = new Grass(new Location(x, y));
+                        break;
+
+                }
+
             }
+            System.out.println("");
         }
 
         return terrains;
@@ -86,6 +106,7 @@ public class LoaderSaver {
     private char[][] readTerrains(){
         BufferedReader input  = null;
         char terrains[][] = null;
+
         try{
             input = new BufferedReader(
                     new FileReader(MAP_LOCATION + "terrain1.txt"));
@@ -100,6 +121,7 @@ public class LoaderSaver {
             while( (line = input.readLine()) != null ){
                 if(i<mapHeight)
                     terrains[i]= line.toCharArray();
+                i++;
             }
         } catch (Exception e ){
             e.printStackTrace();

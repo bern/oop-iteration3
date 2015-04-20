@@ -1,7 +1,7 @@
-package game.model.game_world;
+package game.model.game_world.terrain;
 
 
-import game.model.behavior.Interactable;
+import game.model.behavior.Interactor;
 import game.util.Location;
 
 import javax.swing.*;
@@ -12,9 +12,9 @@ public class Grass extends Terrain {
         super(l);
     }
 
+
     @Override
-    public AbstractAction interactWith(Interactable e) {
-        //TODO
+    public AbstractAction beInteractedWithBy(Interactor i) {
         return null;
     }
 }

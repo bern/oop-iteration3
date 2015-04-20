@@ -1,14 +1,14 @@
-package game.model.entity;
+package game.model.game_world.terrain;
 
 import game.model.behavior.Interactor;
 import game.util.Location;
 
 import javax.swing.*;
 
-public class Npc extends Entity {
 
+public class Dirt extends Terrain {
 
-    public Npc(Location l) {
+    public Dirt(Location l) {
         super(l);
     }
 

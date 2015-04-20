@@ -21,8 +21,8 @@ public abstract class Entity implements Interactable {
     public void moveTo(Location l) {
         setLocation(l);
     }
-    public final AbstractAction interactWith( Interactable ei){
-        return ei.interactWith( this );
+    public final AbstractAction beInteractedWithBy(Interactable ei){
+        return ei.beInteractedWithBy(this);
     }
 
     public ActionMap interactWith(GameWorld gw){

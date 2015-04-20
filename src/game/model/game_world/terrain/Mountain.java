@@ -1,16 +1,18 @@
-package game.model.entity;
+package game.model.game_world.terrain;
 
 import game.model.behavior.Interactor;
 import game.util.Location;
 
 import javax.swing.*;
 
-public class Npc extends Entity {
+
+public class Mountain extends Terrain {
 
 
-    public Npc(Location l) {
+    public Mountain(Location l, Location location) {
         super(l);
     }
+
 
     @Override
     public AbstractAction beInteractedWithBy(Interactor i) {
