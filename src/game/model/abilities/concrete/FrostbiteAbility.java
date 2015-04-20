@@ -25,8 +25,6 @@ public class FrostbiteAbility extends RadialAbility {
 
     @Override
     public void activate(Entity caller) {
-        SlowEffect ef = createStatusEffect();
-        ef.setOwner(caller);
-        affectTiles(caller, ef);
+        affectTiles(caller);
     } 
 }

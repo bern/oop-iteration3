@@ -25,9 +25,7 @@ public class DetectTrapAbility extends RadialAbility {
 
     @Override
     public void activate(Entity caller) {
-        TrapDetectionEffect ef = createStatusEffect();
-        ef.setOwner(caller);
-        affectTiles(caller, ef);
+        affectTiles(caller);
     }
     
 }
