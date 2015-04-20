@@ -5,21 +5,21 @@ import game.util.Location;
 
 public class Mount extends Entity {
 
-    Avataar mountedAvataar;
+    Avatar mountedAvatar;
 
     public Mount(Location l) {
         super(l);
     }
 
-    public void mount(Avataar avataar) {
-        setMountedAvataar(avataar);
+    public void mount(Avatar avatar) {
+        setMountedAvatar(avatar);
     }
 
-    public Avataar getMountedAvataar() {
-        return mountedAvataar;
+    public Avatar getMountedAvatar() {
+        return mountedAvatar;
     }
 
-    public void setMountedAvataar(Avataar mountedAvataar) {
-        this.mountedAvataar = mountedAvataar;
+    public void setMountedAvatar(Avatar mountedAvatar) {
+        this.mountedAvatar = mountedAvatar;
     }
 }

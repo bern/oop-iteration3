@@ -1,7 +1,7 @@
 package game.util;
 
 import game.Game;
-import game.model.entity.Avataar;
+import game.model.entity.Avatar;
 import game.model.entity.Entity;
 import game.model.game_world.GameWorld;
 import game.model.game_world.Grass;
@@ -61,7 +61,7 @@ public class LoaderSaver {
     private GameWorld loadDefaultGameWorld( Game game ) {
 
         Terrain[][] terrains = loadTerrains();
-        Entity e = new Avataar(new Location(5, 5));
+        Entity e = new Avatar(new Location(5, 5));
 
         return new GameWorld( game, terrains, e);
     }
@@ -125,7 +125,7 @@ public class LoaderSaver {
 
 
 
-    private void save( Avataar a ){
+    private void save( Avatar a ){
 
     }
 

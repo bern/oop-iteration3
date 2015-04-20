@@ -4,9 +4,9 @@ import game.util.Location;
 
 import javax.swing.*;
 
-public class Avataar extends Entity {
+public class Avatar extends Entity {
 
-    public Avataar(Location l) {
+    public Avatar(Location l) {
         super(l);
     }
 
