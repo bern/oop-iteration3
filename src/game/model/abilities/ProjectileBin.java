@@ -17,7 +17,7 @@ public class ProjectileBin {
     private List<Projectile> projectiles;
     
     public ProjectileBin() {
-        projectiles = new ArrayList<>();
+        projectiles = new ArrayList<Projectile>();
     }
     
     public void addProjectile(Projectile p) {

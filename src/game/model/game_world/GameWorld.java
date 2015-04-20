@@ -24,19 +24,9 @@ public class GameWorld extends MainModel {
         super(g);
         setWidth(t[0].length);
         setLength(t.length);
-        setCurrentEntity(e);
+        setCurrentEntity( e );
         setTerrains( t );
         itemsAndAreaEffects = new EntityInteractable[length][width];
-
-        int i = 0;
-        for(Terrain[] te: terrains){
-
-            for(Terrain t1: terrains[i]){
-                System.out.print(t1.toString());
-            }
-            i++;
-            System.out.println("");
-        }
 
     }
     
@@ -47,10 +37,10 @@ public class GameWorld extends MainModel {
     @Override
     public ActionMap updateValidActions() {
         // entity look at the map around you! can you even move brah?! what can you with things around you?
-        return currentEntity.interactWith( this );
+        return currentEntity.updateValidActions( this );
     }
 
-    public AbstractAction terrainBeInteractedToBy(Entity entity, Location location) {
+    public AbstractAction terrainBeInteractedWithBy(Entity entity, Location location) {
         // entity interact with terrains... CAN YOU MOVE ON THEM?
         int x = location.getX();
         int y = location.getY();

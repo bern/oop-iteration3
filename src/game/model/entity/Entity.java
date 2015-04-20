@@ -1,46 +1,64 @@
 package game.model.entity;
 
 import game.model.behavior.EntityInteractable;
-import game.model.behavior.Interactor;
+import game.model.entity.occupation.DefaultOccupation;
+import game.model.entity.occupation.Occupation;
+import game.model.game_world.Direction;
 import game.model.game_world.GameWorld;
+import game.model.game_world.terrain.Terrain;
 import game.util.Location;
 
 import javax.swing.*;
 
 
-public abstract class Entity implements EntityInteractable, Interactor{
-
+public abstract class Entity implements EntityInteractable {
     private Location location;
-    private Location facing;
+    private Direction facing;
+    private Occupation occupation;
 
     public Entity(Location l) {
         setLocation(l);
-        setFacing(l.south());
+        setFacing(Direction.DOWN);
+        occupation = new DefaultOccupation();
     }
-
+    public Entity(Location l, Occupation o) {
+        setLocation(l);
+        setFacing(Direction.DOWN);
+        occupation = o;
+    }
+    
+    public void takeDamage(int dmg) {
+        occupation.getStatContainer().modCurrentHealth(dmg * -1);
+    }
+    
+    public void healDamage(int amt) {
+        occupation.getStatContainer().modCurrentHealth(amt);
+    }
+    
+    public void modifyHealth(int amt) {
+        occupation.getStatContainer().modCurrentHealth(amt);
+    }
 
     public void moveTo(Location l) {
         setLocation(l);
     }
-    public final AbstractAction beInteractedWithBy(EntityInteractable ei){
-        return ei.beInteractedWithBy(this);
-    }
 
-    public ActionMap interactWith(GameWorld gw){
+    public ActionMap updateValidActions(GameWorld gw){
         ActionMap allowedActions = new ActionMap();
-
         // entity look around yourself!
-
         // interact with terrains... CAN YOU MOVE ON THEM?
         interactWithTerrainsHelper( allowedActions, gw);
-
         // interact with entities
-
-
         return allowedActions;
     }
 
+    public AbstractAction beInteractedWithBy(EntityInteractable ei){
+        return ei.beInteractedWithBy( this );
+    }
 
+    public AbstractAction interactWith(Terrain t){
+        return t.beInteractedWithBy( this );
+    }
 
     public Location getLocation() {
         return location;
@@ -50,11 +68,11 @@ public abstract class Entity implements EntityInteractable, Interactor{
         this.location = location;
     }
 
-    public Location getFacing() {
+    public Direction getFacing() {
         return facing;
     }
 
-    public void setFacing(Location facing) {
+    public void setFacing(Direction facing) {
         this.facing = facing;
     }
 
@@ -72,24 +90,21 @@ public abstract class Entity implements EntityInteractable, Interactor{
         allowedActions.put(
                 "N",
 
-                gw.terrainBeInteractedToBy(this, location.north()));
+                gw.terrainBeInteractedWithBy(this, location.north()));
         allowedActions.put(
                 "S",
-                gw.terrainBeInteractedToBy(this, location.south()));
+                gw.terrainBeInteractedWithBy(this, location.south()));
         allowedActions.put(
                 "SW",
-                gw.terrainBeInteractedToBy(this, location.southwest()));
+                gw.terrainBeInteractedWithBy(this, location.southwest()));
         allowedActions.put(
                 "SE",
-                gw.terrainBeInteractedToBy(this, location.southeast()));
+                gw.terrainBeInteractedWithBy(this, location.southeast()));
         allowedActions.put(
                 "NW",
-                gw.terrainBeInteractedToBy(this, location.northwest()));
+                gw.terrainBeInteractedWithBy(this, location.northwest()));
         allowedActions.put(
                 "NE",
-                gw.terrainBeInteractedToBy(this, location.northeast()));
-
+                gw.terrainBeInteractedWithBy(this, location.northeast()));
     }
-
-
 }

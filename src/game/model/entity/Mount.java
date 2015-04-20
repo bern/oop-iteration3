@@ -26,23 +26,17 @@ public class Mount extends Entity {
         this.mountedAvatar = mountedAvatar;
     }
 
+    public AbstractAction interactWith(EntityInteractable e) {
+        return e.beInteractedWithBy( this );
+    }
+
     @Override
     public AbstractAction beInteractedWithBy(Entity i) {
         return null;
     }
 
     @Override
-    public AbstractAction beInteractedWithBy(Avatar i) {
+    public AbstractAction beInteractedWithBy(Avatar a) {
         return null;
-    }
-
-    @Override
-    public AbstractAction beInteractedWithBy(Mount i) {
-        return null;
-    }
-
-    @Override
-    public AbstractAction interactWith(EntityInteractable e) {
-        return e.beInteractedWithBy( this );
     }
 }

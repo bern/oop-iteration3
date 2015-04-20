@@ -1,5 +1,6 @@
 package game.model.entity;
 
+import game.controller.DenyMoveAction;
 import game.model.behavior.EntityInteractable;
 import game.util.Location;
 
@@ -14,21 +15,11 @@ public class Npc extends Entity {
 
     @Override
     public AbstractAction beInteractedWithBy(Entity i) {
-        return null;
+        return new DenyMoveAction();
     }
 
     @Override
-    public AbstractAction beInteractedWithBy(Avatar i) {
-        return null;
-    }
-
-    @Override
-    public AbstractAction beInteractedWithBy(Mount i) {
-        return null;
-    }
-
-    @Override
-    public AbstractAction interactWith(EntityInteractable e) {
-        return e.beInteractedWithBy(this);
+    public AbstractAction beInteractedWithBy(Avatar a) {
+        return new DenyMoveAction();    //Change to TalkingAndDenyMoveAction?!?
     }
 }
