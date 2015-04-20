@@ -5,7 +5,6 @@ package game.model.abilities;
 
 import game.Game;
 import game.model.entity.Entity;
-import game.model.game_world.GameWorld;
 import game.util.Location;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class ProjectileBin {
     private List<Projectile> projectiles;
     
     public ProjectileBin() {
-        projectiles = new ArrayList<Projectile>();
+        projectiles = new ArrayList<>();
     }
     
     public void addProjectile(Projectile p) {
@@ -52,14 +51,12 @@ public class ProjectileBin {
                         continue;
                     }
                     
-                    /*
                     Entity ent_collide = Game.getInstance().getActiveWorld().getEntityAt(moveTo);
                     if(ent_collide != null) {
                         removeProjectile(working);
                         working.onHit(ent_collide);
                         continue;
                     }
-                    */
                     
                     working.setLocation(moveTo);
                 }

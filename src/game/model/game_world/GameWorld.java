@@ -29,6 +29,10 @@ public class GameWorld extends MainModel {
         itemsAndAreaEffects = new EntityInteractable[length][width];
 
     }
+    
+    public Entity getEntityAt(Location l) {
+        return entities[l.getX()][l.getY()];
+    }
 
     @Override
     public ActionMap updateValidActions() {

@@ -31,7 +31,7 @@ public class EffectBin {
         for(int i = effects.size() - 1; i >= 0; i--) {
             TimedEffect effect = effects.get(i);
             effect.reverseEffect();
-            effect.applyTo(effect.getVictim());
+            effect.reapply();
         }
     }
     

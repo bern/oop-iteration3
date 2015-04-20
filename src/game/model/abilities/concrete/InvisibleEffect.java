@@ -14,6 +14,11 @@ public class InvisibleEffect extends TimedEffect {
     public InvisibleEffect(long time) {
         super(time);
     }
+    
+    @Override
+    public void reapply() {
+        //getVictim().setInvisible(true);
+    }
 
     @Override
     public void reverseEffect() {
